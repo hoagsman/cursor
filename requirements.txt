@@ -1,0 +1,9 @@
+# Agent Connectors - Dependencies
+# Core async HTTP client
+aiohttp>=3.8.0
+
+# Slack SDK for Slack integration
+slack_sdk>=3.21.0
+
+# Optional: For type checking
+typing_extensions>=4.0.0
