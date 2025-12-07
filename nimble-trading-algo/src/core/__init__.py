@@ -1,0 +1,1 @@
+"""Core trading algorithm components."""
