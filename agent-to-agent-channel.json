@@ -1,0 +1,150 @@
+{
+  "version": "1.0.0",
+  "channel": {
+    "name": "agent-to-agent",
+    "purpose": "Agent-to-agent communication, orchestration, and multi-agent workflows",
+    "topic": "AI | Agent Orchestration"
+  },
+  "updated_at": "2026-03-20T07:21:10Z",
+  "orchestrator": {
+    "id": "manus",
+    "name": "Manus",
+    "type": "ai-agent",
+    "provider": "manus",
+    "role": "orchestrator"
+  },
+  "agents": [
+    {
+      "id": "onedrive-sharepoint",
+      "name": "OneDrive and SharePoint",
+      "type": "integration",
+      "provider": "microsoft"
+    },
+    {
+      "id": "linear-asks",
+      "name": "Linear Asks",
+      "type": "integration",
+      "provider": "linear"
+    },
+    {
+      "id": "outlook-calendar",
+      "name": "Outlook Calendar",
+      "type": "integration",
+      "provider": "microsoft"
+    },
+    {
+      "id": "cursor",
+      "name": "Cursor",
+      "type": "ai-agent",
+      "provider": "cursor"
+    },
+    {
+      "id": "tom-gmail",
+      "name": "Tom - Gmail",
+      "type": "integration",
+      "provider": "google"
+    },
+    {
+      "id": "chatgpt",
+      "name": "ChatGPT",
+      "type": "ai-agent",
+      "provider": "openai"
+    },
+    {
+      "id": "codex",
+      "name": "Codex",
+      "type": "ai-agent",
+      "provider": "openai"
+    },
+    {
+      "id": "google-sheets-workflow-steps",
+      "name": "Google Sheets Workflow Steps",
+      "type": "integration",
+      "provider": "google"
+    },
+    {
+      "id": "google-drive",
+      "name": "Google Drive",
+      "type": "integration",
+      "provider": "google"
+    },
+    {
+      "id": "replit",
+      "name": "Replit",
+      "type": "ai-agent",
+      "provider": "replit"
+    },
+    {
+      "id": "claude",
+      "name": "Claude",
+      "type": "ai-agent",
+      "provider": "anthropic"
+    },
+    {
+      "id": "ellie",
+      "name": "Ellie",
+      "type": "ai-agent",
+      "provider": "ellie"
+    },
+    {
+      "id": "computer",
+      "name": "Computer",
+      "type": "ai-agent",
+      "provider": "anthropic"
+    },
+    {
+      "id": "linear",
+      "name": "Linear",
+      "type": "integration",
+      "provider": "linear"
+    },
+    {
+      "id": "notion",
+      "name": "Notion",
+      "type": "integration",
+      "provider": "notion"
+    },
+    {
+      "id": "langsmith-fleet",
+      "name": "LangSmith Fleet",
+      "type": "ai-agent",
+      "provider": "langchain"
+    },
+    {
+      "id": "kilo",
+      "name": "Kilo",
+      "type": "ai-agent",
+      "provider": "kilo"
+    },
+    {
+      "id": "blackbox-agent",
+      "name": "BLACKBOX Agent",
+      "type": "ai-agent",
+      "provider": "blackbox"
+    },
+    {
+      "id": "vercel",
+      "name": "Vercel",
+      "type": "integration",
+      "provider": "vercel"
+    },
+    {
+      "id": "sourcery",
+      "name": "Sourcery",
+      "type": "ai-agent",
+      "provider": "sourcery"
+    },
+    {
+      "id": "notion-ai",
+      "name": "Notion AI",
+      "type": "ai-agent",
+      "provider": "notion"
+    }
+  ],
+  "summary": {
+    "total_agents": 21,
+    "ai_agents": 14,
+    "integrations": 7,
+    "orchestrated_by": "manus"
+  }
+}
