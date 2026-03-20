@@ -1,0 +1,97 @@
+{
+  "channel": {
+    "name": "community-feedback",
+    "purpose": "User feedback, feature requests, and community insights",
+    "topic": "Growth | Community Feedback"
+  },
+  "agents": {
+    "primary": [
+      {
+        "name": "Claude",
+        "roles": ["feedback-analysis", "sentiment-classification", "response-drafting"]
+      },
+      {
+        "name": "Computer",
+        "roles": ["research", "data-aggregation", "trend-analysis"]
+      },
+      {
+        "name": "Ellie",
+        "roles": ["community-engagement", "communication"]
+      }
+    ],
+    "integrations": [
+      {
+        "name": "OneDrive and SharePoint",
+        "category": "storage"
+      },
+      {
+        "name": "Linear Asks",
+        "category": "project-management"
+      },
+      {
+        "name": "Outlook Calendar",
+        "category": "scheduling"
+      },
+      {
+        "name": "Cursor",
+        "category": "development"
+      },
+      {
+        "name": "Tom - Gmail",
+        "category": "communication"
+      },
+      {
+        "name": "ChatGPT",
+        "category": "ai-reasoning"
+      },
+      {
+        "name": "Codex",
+        "category": "development"
+      },
+      {
+        "name": "Google Sheets Workflow Steps",
+        "category": "data-workflow"
+      },
+      {
+        "name": "Google Drive",
+        "category": "storage"
+      },
+      {
+        "name": "Replit",
+        "category": "development"
+      },
+      {
+        "name": "Linear",
+        "category": "project-management"
+      },
+      {
+        "name": "Notion",
+        "category": "knowledge-base"
+      },
+      {
+        "name": "LangSmith Fleet",
+        "category": "observability"
+      },
+      {
+        "name": "Kilo",
+        "category": "operations"
+      },
+      {
+        "name": "BLACKBOX Agent",
+        "category": "ai-reasoning"
+      },
+      {
+        "name": "Vercel",
+        "category": "deployment"
+      },
+      {
+        "name": "Sourcery",
+        "category": "code-review"
+      },
+      {
+        "name": "Notion AI",
+        "category": "knowledge-base"
+      }
+    ]
+  }
+}
