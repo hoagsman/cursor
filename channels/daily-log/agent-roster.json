@@ -1,0 +1,101 @@
+{
+  "channel": {
+    "name": "daily-log",
+    "purpose": "Daily progress updates and founder log",
+    "topic": "HQ | Daily Progress"
+  },
+  "agents": {
+    "primary": [
+      {
+        "name": "Manus",
+        "roles": ["orchestration", "cross-platform-messaging", "daily-dispatch"]
+      },
+      {
+        "name": "Computer",
+        "roles": ["research", "ui-automation", "data-gathering"]
+      },
+      {
+        "name": "Claude",
+        "roles": ["reasoning", "synthesis", "daily-summaries"]
+      }
+    ],
+    "integrations": [
+      {
+        "name": "OneDrive and SharePoint",
+        "category": "storage"
+      },
+      {
+        "name": "Linear Asks",
+        "category": "project-management"
+      },
+      {
+        "name": "Outlook Calendar",
+        "category": "scheduling"
+      },
+      {
+        "name": "Cursor",
+        "category": "development"
+      },
+      {
+        "name": "Tom - Gmail",
+        "category": "communication"
+      },
+      {
+        "name": "ChatGPT",
+        "category": "ai-reasoning"
+      },
+      {
+        "name": "Codex",
+        "category": "development"
+      },
+      {
+        "name": "Google Sheets Workflow Steps",
+        "category": "data-workflow"
+      },
+      {
+        "name": "Google Drive",
+        "category": "storage"
+      },
+      {
+        "name": "Replit",
+        "category": "development"
+      },
+      {
+        "name": "Ellie",
+        "category": "ai-assistant"
+      },
+      {
+        "name": "Linear",
+        "category": "project-management"
+      },
+      {
+        "name": "Notion",
+        "category": "knowledge-base"
+      },
+      {
+        "name": "LangSmith Fleet",
+        "category": "observability"
+      },
+      {
+        "name": "Kilo",
+        "category": "operations"
+      },
+      {
+        "name": "BLACKBOX Agent",
+        "category": "ai-reasoning"
+      },
+      {
+        "name": "Vercel",
+        "category": "deployment"
+      },
+      {
+        "name": "Sourcery",
+        "category": "code-review"
+      },
+      {
+        "name": "Notion AI",
+        "category": "knowledge-base"
+      }
+    ]
+  }
+}
