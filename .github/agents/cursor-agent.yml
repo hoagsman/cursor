@@ -1,0 +1,39 @@
+agent: cursor
+display_name: Cursor Cloud Agent
+channel: ideas-research
+status: online
+
+identity:
+  type: code-agent
+  provider: Cursor
+  model: claude-4.6-opus-high-thinking
+  mode: cloud-agent
+
+routing:
+  inbound:
+    - slack: "#ideas-research"
+    - github: issues, pull-requests
+  outbound:
+    - github: commits, pull-requests, branch-management
+    - slack: "#ideas-research" (via user relay)
+
+capabilities:
+  - Full codebase read/write access
+  - Git operations (branch, commit, push, PR)
+  - Multi-file code generation and refactoring
+  - Dependency management and build tooling
+  - Web search for up-to-date technical documentation
+  - Integration with Linear, Notion, Slack (MCP tools)
+
+workspace:
+  repo: hoagsman/cursor
+  branch_pattern: "cursor/*"
+  base_branch: main
+
+collaboration:
+  works_with:
+    - linear: Issue tracking and sprint management
+    - notion: Documentation and knowledge base
+    - slack: Communication and coordination
+    - vercel: Deployment triggers
+    - github: Source control and CI/CD

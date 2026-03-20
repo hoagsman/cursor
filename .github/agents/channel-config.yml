@@ -1,0 +1,184 @@
+channel: ideas-research
+purpose: Research, ideas, and strategic thinking
+topic: "Strategy | Ideas & Research"
+
+agents:
+  # --- Connected via Computer ---
+  onedrive-sharepoint:
+    name: OneDrive and SharePoint
+    connector: OneDrive / SharePoint (Files search)
+    status: connected
+    capabilities:
+      - file storage
+      - document sharing
+      - file search
+
+  outlook-calendar:
+    name: Outlook Calendar
+    connector: Outlook
+    status: connected
+    capabilities:
+      - calendar management
+      - meeting scheduling
+
+  google-sheets:
+    name: Google Sheets Workflow Steps
+    connector: Google Sheets (Pipedream)
+    status: connected
+    capabilities:
+      - spreadsheet automation
+      - workflow data processing
+
+  google-drive:
+    name: Google Drive
+    connector: Google Drive
+    status: connected
+    capabilities:
+      - file storage
+      - document management
+
+  # --- Disconnected (Need Re-Auth) ---
+  linear:
+    name: Linear / Linear Asks
+    connector: Linear OAuth
+    status: disconnected
+    action_needed: OAuth re-authorization
+    capabilities:
+      - issue tracking
+      - project management
+      - sprint planning
+
+  notion:
+    name: Notion / Notion AI
+    connector: Notion MCP
+    status: disconnected
+    action_needed: OAuth re-authorization
+    capabilities:
+      - knowledge base
+      - documentation
+      - AI-powered content
+
+  vercel:
+    name: Vercel
+    connector: Vercel OAuth
+    status: disconnected
+    action_needed: OAuth re-authorization
+    capabilities:
+      - deployment
+      - hosting
+      - preview environments
+
+  gmail:
+    name: Tom - Gmail
+    connector: Gmail with Calendar
+    status: disconnected
+    action_needed: OAuth re-authorization
+    capabilities:
+      - email
+      - calendar integration
+
+  # --- IDE / Code Agents (Slack/GitHub routed) ---
+  cursor:
+    name: Cursor
+    connector: Slack/GitHub (Cloud Agent)
+    status: connected
+    routing: slack-channel + github-repo
+    capabilities:
+      - code generation
+      - code review
+      - repository management
+      - pull request automation
+      - multi-file refactoring
+
+  chatgpt-codex:
+    name: ChatGPT / Codex
+    connector: Slack channel / API
+    status: available
+    routing: slack-channel
+    capabilities:
+      - general reasoning
+      - code generation
+      - analysis
+
+  claude:
+    name: Claude
+    connector: Claude Desktop / Kilo Code
+    status: available
+    routing: slack-channel
+    capabilities:
+      - strategic reasoning
+      - idea synthesis
+      - thesis development
+      - analytical writing
+
+  replit:
+    name: Replit
+    connector: none
+    status: available
+    routing: slack-channel
+    capabilities:
+      - prototyping
+      - rapid deployment
+      - hosted environments
+
+  clawstak:
+    name: ClawStak
+    connector: none (internal product)
+    status: available
+    capabilities:
+      - proprietary product logic
+
+  kilo:
+    name: Kilo
+    connector: Kilo Code IDE
+    status: available
+    routing: local-ide
+    capabilities:
+      - local code editing
+      - IDE-based AI assistance
+
+  blackbox:
+    name: BLACKBOX Agent
+    connector: Blackbox AI IDE
+    status: available
+    routing: local-ide
+    capabilities:
+      - code completion
+      - code search
+      - IDE-based AI assistance
+
+  langsmith-fleet:
+    name: LangSmith Fleet
+    connector: API (bash/scripts)
+    status: available
+    routing: api
+    capabilities:
+      - LLM observability
+      - prompt tracing
+      - evaluation
+
+  sourcery:
+    name: Sourcery
+    connector: none
+    status: available
+    capabilities:
+      - code quality
+      - automated refactoring
+      - code review
+
+  manus:
+    name: Manus
+    connector: Slack / iMessage bridge
+    status: available
+    routing: slack-channel
+    capabilities:
+      - external agent orchestration
+      - cross-platform messaging
+
+routing:
+  primary: slack
+  channels:
+    - ideas-research
+  github_repos:
+    - hoagsman/cursor
+  a2a_hub: tjhoags/Slack
