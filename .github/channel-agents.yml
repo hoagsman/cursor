@@ -1,0 +1,101 @@
+# Channel Agents Configuration
+# Agents integrated into the #launch-prep channel for go-to-market activities.
+
+channel: launch-prep
+purpose: Launch preparation and go-to-market activities
+
+agents:
+  # Productivity & Storage
+  - name: OneDrive and SharePoint
+    category: storage
+    description: File storage and collaboration via Microsoft OneDrive and SharePoint
+
+  - name: Google Drive
+    category: storage
+    description: File storage and collaboration via Google Drive
+
+  - name: Google Sheets Workflow Steps
+    category: productivity
+    description: Spreadsheet-based workflow automation via Google Sheets
+
+  # Project Management & Tracking
+  - name: Linear
+    category: project-management
+    description: Issue tracking and project management
+
+  - name: Linear Asks
+    category: project-management
+    description: Conversational interface for Linear issue triage and queries
+
+  - name: Notion
+    category: project-management
+    description: Documentation and knowledge base management
+
+  - name: Notion AI
+    category: project-management
+    description: AI-powered assistance within Notion workspaces
+
+  # Calendar & Communication
+  - name: Outlook Calendar
+    category: calendar
+    description: Calendar scheduling and event management via Outlook
+
+  - name: Tom - Gmail
+    category: communication
+    description: Email integration via Gmail
+
+  # AI & Development Agents
+  - name: Cursor
+    category: development
+    description: AI-powered code editor agent
+
+  - name: ChatGPT
+    category: ai-assistant
+    description: General-purpose AI assistant by OpenAI
+
+  - name: Claude
+    category: ai-assistant
+    description: AI assistant by Anthropic
+
+  - name: Codex
+    category: development
+    description: Code generation and development agent by OpenAI
+
+  - name: Replit
+    category: development
+    description: Prototyping and deployment platform
+
+  - name: BLACKBOX Agent
+    category: development
+    description: AI-powered code generation agent
+
+  - name: Sourcery
+    category: development
+    description: Automated code review and refactoring
+
+  - name: Computer
+    category: ai-assistant
+    description: Computer-use agent for UI interaction and automation
+
+  - name: Manus
+    category: ai-assistant
+    description: Autonomous task execution agent
+
+  # Deployment & Infrastructure
+  - name: Vercel
+    category: deployment
+    description: Frontend deployment and hosting platform
+
+  # Observability & Monitoring
+  - name: LangSmith Fleet
+    category: observability
+    description: LLM observability and tracing
+
+  # Custom & Internal
+  - name: ClawStak
+    category: custom
+    description: Custom integration agent
+
+  - name: Kilo
+    category: custom
+    description: Custom integration agent
