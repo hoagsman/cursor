@@ -1,0 +1,257 @@
+{
+  "version": "1.0.0",
+  "description": "Agent-to-channel assignment configuration. Maps all AI agents and integrations to all workspace channels.",
+  "updated_at": "2026-03-20T00:00:00Z",
+  "policy": "all-agents-all-channels",
+  "agents": [
+    {
+      "id": "onedrive-sharepoint",
+      "name": "OneDrive and SharePoint",
+      "type": "integration",
+      "provider": "microsoft"
+    },
+    {
+      "id": "linear-asks",
+      "name": "Linear Asks",
+      "type": "integration",
+      "provider": "linear"
+    },
+    {
+      "id": "outlook-calendar",
+      "name": "Outlook Calendar",
+      "type": "integration",
+      "provider": "microsoft"
+    },
+    {
+      "id": "cursor",
+      "name": "Cursor",
+      "type": "ai-agent",
+      "provider": "cursor"
+    },
+    {
+      "id": "tom-gmail",
+      "name": "Tom - Gmail",
+      "type": "integration",
+      "provider": "google"
+    },
+    {
+      "id": "chatgpt",
+      "name": "ChatGPT",
+      "type": "ai-agent",
+      "provider": "openai"
+    },
+    {
+      "id": "codex",
+      "name": "Codex",
+      "type": "ai-agent",
+      "provider": "openai"
+    },
+    {
+      "id": "google-sheets-workflow-steps",
+      "name": "Google Sheets Workflow Steps",
+      "type": "integration",
+      "provider": "google"
+    },
+    {
+      "id": "google-drive",
+      "name": "Google Drive",
+      "type": "integration",
+      "provider": "google"
+    },
+    {
+      "id": "replit",
+      "name": "Replit",
+      "type": "ai-agent",
+      "provider": "replit"
+    },
+    {
+      "id": "claude",
+      "name": "Claude",
+      "type": "ai-agent",
+      "provider": "anthropic"
+    },
+    {
+      "id": "clawstak",
+      "name": "ClawStak",
+      "type": "ai-agent",
+      "provider": "clawstak"
+    },
+    {
+      "id": "manus",
+      "name": "Manus",
+      "type": "ai-agent",
+      "provider": "manus"
+    },
+    {
+      "id": "computer",
+      "name": "Computer",
+      "type": "ai-agent",
+      "provider": "anthropic"
+    },
+    {
+      "id": "linear",
+      "name": "Linear",
+      "type": "integration",
+      "provider": "linear"
+    },
+    {
+      "id": "notion",
+      "name": "Notion",
+      "type": "integration",
+      "provider": "notion"
+    },
+    {
+      "id": "langsmith-fleet",
+      "name": "LangSmith Fleet",
+      "type": "ai-agent",
+      "provider": "langchain"
+    },
+    {
+      "id": "kilo",
+      "name": "Kilo",
+      "type": "ai-agent",
+      "provider": "kilo"
+    },
+    {
+      "id": "blackbox-agent",
+      "name": "BLACKBOX Agent",
+      "type": "ai-agent",
+      "provider": "blackbox"
+    },
+    {
+      "id": "vercel",
+      "name": "Vercel",
+      "type": "integration",
+      "provider": "vercel"
+    },
+    {
+      "id": "sourcery",
+      "name": "Sourcery",
+      "type": "ai-agent",
+      "provider": "sourcery"
+    },
+    {
+      "id": "notion-ai",
+      "name": "Notion AI",
+      "type": "ai-agent",
+      "provider": "notion"
+    }
+  ],
+  "channels": [
+    {
+      "id": "C0AEU4DMVRR",
+      "name": "bot-notifications"
+    },
+    {
+      "id": "C0AE35TJBLZ",
+      "name": "all-clawstak"
+    },
+    {
+      "id": "C0AF0FY381G",
+      "name": "user-signups"
+    },
+    {
+      "id": "C0ADLCE3H9R",
+      "name": "projects"
+    },
+    {
+      "id": "C0AF0FVPXLJ",
+      "name": "deployments"
+    },
+    {
+      "id": "C0ADQN27ZHU",
+      "name": "code-dev"
+    },
+    {
+      "id": "C0AFUQ17PJL",
+      "name": "bugs-issues"
+    },
+    {
+      "id": "C0AF447GN20",
+      "name": "n8n-workflows"
+    },
+    {
+      "id": "C0AEZFBAZ3Q",
+      "name": "project-logs"
+    },
+    {
+      "id": "C0AFUQ460M6",
+      "name": "daily-log"
+    },
+    {
+      "id": "C0AEU4DEYMR",
+      "name": "launch-prep"
+    },
+    {
+      "id": "C0AF447FS7N",
+      "name": "product-dev"
+    },
+    {
+      "id": "C0AFDDFJRMF",
+      "name": "payments-billing"
+    },
+    {
+      "id": "C0AFUQ35FJL",
+      "name": "integration-linear"
+    },
+    {
+      "id": "C0AEU4C4WJX",
+      "name": "integration-github"
+    },
+    {
+      "id": "C0AFUQ3BDFS",
+      "name": "agent-marketplace"
+    },
+    {
+      "id": "C0AFDDH1J65",
+      "name": "agent-submissions"
+    },
+    {
+      "id": "C0AEU4ENUCT",
+      "name": "announcements"
+    },
+    {
+      "id": "C0AEK2PH3F1",
+      "name": "community-feedback"
+    },
+    {
+      "id": "C0AF5714NF6",
+      "name": "loop-sloane"
+    },
+    {
+      "id": "investment-ops",
+      "name": "investment-ops"
+    }
+  ],
+  "assignments": {
+    "strategy": "all-to-all",
+    "description": "Every agent is assigned to every channel. This ensures full coverage across the workspace.",
+    "matrix": {
+      "onedrive-sharepoint": ["bot-notifications", "all-clawstak", "user-signups", "projects", "deployments", "code-dev", "bugs-issues", "n8n-workflows", "project-logs", "daily-log", "launch-prep", "product-dev", "payments-billing", "integration-linear", "integration-github", "agent-marketplace", "agent-submissions", "announcements", "community-feedback", "loop-sloane", "investment-ops"],
+      "linear-asks": ["bot-notifications", "all-clawstak", "user-signups", "projects", "deployments", "code-dev", "bugs-issues", "n8n-workflows", "project-logs", "daily-log", "launch-prep", "product-dev", "payments-billing", "integration-linear", "integration-github", "agent-marketplace", "agent-submissions", "announcements", "community-feedback", "loop-sloane", "investment-ops"],
+      "outlook-calendar": ["bot-notifications", "all-clawstak", "user-signups", "projects", "deployments", "code-dev", "bugs-issues", "n8n-workflows", "project-logs", "daily-log", "launch-prep", "product-dev", "payments-billing", "integration-linear", "integration-github", "agent-marketplace", "agent-submissions", "announcements", "community-feedback", "loop-sloane", "investment-ops"],
+      "cursor": ["bot-notifications", "all-clawstak", "user-signups", "projects", "deployments", "code-dev", "bugs-issues", "n8n-workflows", "project-logs", "daily-log", "launch-prep", "product-dev", "payments-billing", "integration-linear", "integration-github", "agent-marketplace", "agent-submissions", "announcements", "community-feedback", "loop-sloane", "investment-ops"],
+      "tom-gmail": ["bot-notifications", "all-clawstak", "user-signups", "projects", "deployments", "code-dev", "bugs-issues", "n8n-workflows", "project-logs", "daily-log", "launch-prep", "product-dev", "payments-billing", "integration-linear", "integration-github", "agent-marketplace", "agent-submissions", "announcements", "community-feedback", "loop-sloane", "investment-ops"],
+      "chatgpt": ["bot-notifications", "all-clawstak", "user-signups", "projects", "deployments", "code-dev", "bugs-issues", "n8n-workflows", "project-logs", "daily-log", "launch-prep", "product-dev", "payments-billing", "integration-linear", "integration-github", "agent-marketplace", "agent-submissions", "announcements", "community-feedback", "loop-sloane", "investment-ops"],
+      "codex": ["bot-notifications", "all-clawstak", "user-signups", "projects", "deployments", "code-dev", "bugs-issues", "n8n-workflows", "project-logs", "daily-log", "launch-prep", "product-dev", "payments-billing", "integration-linear", "integration-github", "agent-marketplace", "agent-submissions", "announcements", "community-feedback", "loop-sloane", "investment-ops"],
+      "google-sheets-workflow-steps": ["bot-notifications", "all-clawstak", "user-signups", "projects", "deployments", "code-dev", "bugs-issues", "n8n-workflows", "project-logs", "daily-log", "launch-prep", "product-dev", "payments-billing", "integration-linear", "integration-github", "agent-marketplace", "agent-submissions", "announcements", "community-feedback", "loop-sloane", "investment-ops"],
+      "google-drive": ["bot-notifications", "all-clawstak", "user-signups", "projects", "deployments", "code-dev", "bugs-issues", "n8n-workflows", "project-logs", "daily-log", "launch-prep", "product-dev", "payments-billing", "integration-linear", "integration-github", "agent-marketplace", "agent-submissions", "announcements", "community-feedback", "loop-sloane", "investment-ops"],
+      "replit": ["bot-notifications", "all-clawstak", "user-signups", "projects", "deployments", "code-dev", "bugs-issues", "n8n-workflows", "project-logs", "daily-log", "launch-prep", "product-dev", "payments-billing", "integration-linear", "integration-github", "agent-marketplace", "agent-submissions", "announcements", "community-feedback", "loop-sloane", "investment-ops"],
+      "claude": ["bot-notifications", "all-clawstak", "user-signups", "projects", "deployments", "code-dev", "bugs-issues", "n8n-workflows", "project-logs", "daily-log", "launch-prep", "product-dev", "payments-billing", "integration-linear", "integration-github", "agent-marketplace", "agent-submissions", "announcements", "community-feedback", "loop-sloane", "investment-ops"],
+      "clawstak": ["bot-notifications", "all-clawstak", "user-signups", "projects", "deployments", "code-dev", "bugs-issues", "n8n-workflows", "project-logs", "daily-log", "launch-prep", "product-dev", "payments-billing", "integration-linear", "integration-github", "agent-marketplace", "agent-submissions", "announcements", "community-feedback", "loop-sloane", "investment-ops"],
+      "manus": ["bot-notifications", "all-clawstak", "user-signups", "projects", "deployments", "code-dev", "bugs-issues", "n8n-workflows", "project-logs", "daily-log", "launch-prep", "product-dev", "payments-billing", "integration-linear", "integration-github", "agent-marketplace", "agent-submissions", "announcements", "community-feedback", "loop-sloane", "investment-ops"],
+      "computer": ["bot-notifications", "all-clawstak", "user-signups", "projects", "deployments", "code-dev", "bugs-issues", "n8n-workflows", "project-logs", "daily-log", "launch-prep", "product-dev", "payments-billing", "integration-linear", "integration-github", "agent-marketplace", "agent-submissions", "announcements", "community-feedback", "loop-sloane", "investment-ops"],
+      "linear": ["bot-notifications", "all-clawstak", "user-signups", "projects", "deployments", "code-dev", "bugs-issues", "n8n-workflows", "project-logs", "daily-log", "launch-prep", "product-dev", "payments-billing", "integration-linear", "integration-github", "agent-marketplace", "agent-submissions", "announcements", "community-feedback", "loop-sloane", "investment-ops"],
+      "notion": ["bot-notifications", "all-clawstak", "user-signups", "projects", "deployments", "code-dev", "bugs-issues", "n8n-workflows", "project-logs", "daily-log", "launch-prep", "product-dev", "payments-billing", "integration-linear", "integration-github", "agent-marketplace", "agent-submissions", "announcements", "community-feedback", "loop-sloane", "investment-ops"],
+      "langsmith-fleet": ["bot-notifications", "all-clawstak", "user-signups", "projects", "deployments", "code-dev", "bugs-issues", "n8n-workflows", "project-logs", "daily-log", "launch-prep", "product-dev", "payments-billing", "integration-linear", "integration-github", "agent-marketplace", "agent-submissions", "announcements", "community-feedback", "loop-sloane", "investment-ops"],
+      "kilo": ["bot-notifications", "all-clawstak", "user-signups", "projects", "deployments", "code-dev", "bugs-issues", "n8n-workflows", "project-logs", "daily-log", "launch-prep", "product-dev", "payments-billing", "integration-linear", "integration-github", "agent-marketplace", "agent-submissions", "announcements", "community-feedback", "loop-sloane", "investment-ops"],
+      "blackbox-agent": ["bot-notifications", "all-clawstak", "user-signups", "projects", "deployments", "code-dev", "bugs-issues", "n8n-workflows", "project-logs", "daily-log", "launch-prep", "product-dev", "payments-billing", "integration-linear", "integration-github", "agent-marketplace", "agent-submissions", "announcements", "community-feedback", "loop-sloane", "investment-ops"],
+      "vercel": ["bot-notifications", "all-clawstak", "user-signups", "projects", "deployments", "code-dev", "bugs-issues", "n8n-workflows", "project-logs", "daily-log", "launch-prep", "product-dev", "payments-billing", "integration-linear", "integration-github", "agent-marketplace", "agent-submissions", "announcements", "community-feedback", "loop-sloane", "investment-ops"],
+      "sourcery": ["bot-notifications", "all-clawstak", "user-signups", "projects", "deployments", "code-dev", "bugs-issues", "n8n-workflows", "project-logs", "daily-log", "launch-prep", "product-dev", "payments-billing", "integration-linear", "integration-github", "agent-marketplace", "agent-submissions", "announcements", "community-feedback", "loop-sloane", "investment-ops"],
+      "notion-ai": ["bot-notifications", "all-clawstak", "user-signups", "projects", "deployments", "code-dev", "bugs-issues", "n8n-workflows", "project-logs", "daily-log", "launch-prep", "product-dev", "payments-billing", "integration-linear", "integration-github", "agent-marketplace", "agent-submissions", "announcements", "community-feedback", "loop-sloane", "investment-ops"]
+    },
+    "total_assignments": 462,
+    "agents_count": 22,
+    "channels_count": 21
+  }
+}
