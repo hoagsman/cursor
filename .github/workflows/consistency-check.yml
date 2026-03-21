@@ -1,0 +1,164 @@
+name: Second Brain Consistency Check
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/**'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'docs/**'
+  schedule:
+    # Run every 6 hours for periodic consistency validation
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+jobs:
+  validate-docs:
+    name: Validate Documentation Consistency
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate required documentation files exist
+        run: |
+          echo "=== Second Brain Consistency Check ==="
+          echo ""
+
+          MISSING=0
+
+          for file in \
+            "docs/SECOND_BRAIN_ARCHITECTURE.md" \
+            "docs/SYNC_PROTOCOL.md" \
+            "docs/AGENT_ROLES.md"; do
+            if [ -f "$file" ]; then
+              echo "✓ $file exists"
+            else
+              echo "✗ MISSING: $file"
+              MISSING=$((MISSING + 1))
+            fi
+          done
+
+          echo ""
+          if [ $MISSING -gt 0 ]; then
+            echo "ERROR: $MISSING required documentation file(s) missing."
+            exit 1
+          else
+            echo "All required documentation files present."
+          fi
+
+      - name: Validate cross-references between docs
+        run: |
+          echo "=== Cross-Reference Validation ==="
+          echo ""
+
+          ERRORS=0
+
+          # Check that SECOND_BRAIN_ARCHITECTURE.md references the other docs
+          if grep -q "SYNC_PROTOCOL.md" docs/SECOND_BRAIN_ARCHITECTURE.md; then
+            echo "✓ Architecture doc references Sync Protocol"
+          else
+            echo "✗ Architecture doc missing reference to Sync Protocol"
+            ERRORS=$((ERRORS + 1))
+          fi
+
+          if grep -q "AGENT_ROLES.md" docs/SECOND_BRAIN_ARCHITECTURE.md; then
+            echo "✓ Architecture doc references Agent Roles"
+          else
+            echo "✗ Architecture doc missing reference to Agent Roles"
+            ERRORS=$((ERRORS + 1))
+          fi
+
+          # Check that SYNC_PROTOCOL.md references the other docs
+          if grep -q "SECOND_BRAIN_ARCHITECTURE.md" docs/SYNC_PROTOCOL.md; then
+            echo "✓ Sync Protocol references Architecture doc"
+          else
+            echo "✗ Sync Protocol missing reference to Architecture doc"
+            ERRORS=$((ERRORS + 1))
+          fi
+
+          if grep -q "AGENT_ROLES.md" docs/SYNC_PROTOCOL.md; then
+            echo "✓ Sync Protocol references Agent Roles"
+          else
+            echo "✗ Sync Protocol missing reference to Agent Roles"
+            ERRORS=$((ERRORS + 1))
+          fi
+
+          # Check that AGENT_ROLES.md references the other docs
+          if grep -q "SECOND_BRAIN_ARCHITECTURE.md" docs/AGENT_ROLES.md; then
+            echo "✓ Agent Roles references Architecture doc"
+          else
+            echo "✗ Agent Roles missing reference to Architecture doc"
+            ERRORS=$((ERRORS + 1))
+          fi
+
+          if grep -q "SYNC_PROTOCOL.md" docs/AGENT_ROLES.md; then
+            echo "✓ Agent Roles references Sync Protocol"
+          else
+            echo "✗ Agent Roles missing reference to Sync Protocol"
+            ERRORS=$((ERRORS + 1))
+          fi
+
+          echo ""
+          if [ $ERRORS -gt 0 ]; then
+            echo "ERROR: $ERRORS cross-reference issue(s) found."
+            exit 1
+          else
+            echo "All cross-references valid."
+          fi
+
+      - name: Validate tri-channel architecture references
+        run: |
+          echo "=== Tri-Channel Reference Validation ==="
+          echo ""
+
+          ERRORS=0
+
+          # Verify all three channel IDs are documented
+          for channel_id in "C0ANCJSFGV7" "C0ADHSBR7GB" "C0AEU1NFAE7"; do
+            if grep -rq "$channel_id" docs/; then
+              echo "✓ Channel $channel_id is documented"
+            else
+              echo "✗ Channel $channel_id is not documented"
+              ERRORS=$((ERRORS + 1))
+            fi
+          done
+
+          # Verify channel names are referenced
+          for channel_name in "notion-ai" "obsidian-vault" "second-brain"; do
+            if grep -rq "$channel_name" docs/; then
+              echo "✓ Channel #$channel_name is referenced"
+            else
+              echo "✗ Channel #$channel_name is not referenced"
+              ERRORS=$((ERRORS + 1))
+            fi
+          done
+
+          echo ""
+          if [ $ERRORS -gt 0 ]; then
+            echo "ERROR: $ERRORS channel reference issue(s) found."
+            exit 1
+          else
+            echo "All tri-channel references valid."
+          fi
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "======================================"
+          echo "  Second Brain Consistency Check"
+          echo "  Run: $(date -u '+%Y-%m-%dT%H:%M:%SZ')"
+          echo "======================================"
+          echo ""
+          echo "Systems checked:"
+          echo "  - Documentation file presence"
+          echo "  - Cross-reference integrity"
+          echo "  - Tri-channel architecture references"
+          echo ""
+          echo "Channels monitored:"
+          echo "  - #notion-ai (C0ANCJSFGV7)"
+          echo "  - #obsidian-vault (C0ADHSBR7GB)"
+          echo "  - #second-brain (C0AEU1NFAE7)"
