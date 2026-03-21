@@ -1,0 +1,77 @@
+{
+  "channel": {
+    "name": "goals-and-objectives",
+    "purpose": "Agent setup, integrated memory, BDI, MCE and more",
+    "topic": "Canonical source for agent beliefs, desires and Intentions (BDI)"
+  },
+  "agents": {
+    "primary": [
+      {
+        "name": "Computer",
+        "roles": ["research", "ui-automation", "data-gathering", "agent-setup"]
+      },
+      {
+        "name": "Cursor",
+        "roles": ["code-generation", "repository-management", "agent-tooling"]
+      }
+    ],
+    "integrations": [
+      {
+        "name": "Linear",
+        "category": "project-management"
+      },
+      {
+        "name": "LangSmith Fleet",
+        "category": "observability"
+      },
+      {
+        "name": "Notion",
+        "category": "knowledge-base"
+      },
+      {
+        "name": "Outlook Calendar",
+        "category": "scheduling"
+      },
+      {
+        "name": "Kilo",
+        "category": "operations"
+      },
+      {
+        "name": "Vercel",
+        "category": "deployment"
+      },
+      {
+        "name": "Sourcery",
+        "category": "code-review"
+      },
+      {
+        "name": "Codex",
+        "category": "development"
+      },
+      {
+        "name": "OneDrive and SharePoint",
+        "category": "storage"
+      },
+      {
+        "name": "ChatGPT",
+        "category": "ai-reasoning"
+      },
+      {
+        "name": "BLACKBOX Agent",
+        "category": "ai-reasoning"
+      },
+      {
+        "name": "Replit",
+        "category": "development"
+      },
+      {
+        "name": "Google Sheets Workflow Steps",
+        "category": "data-workflow"
+      },
+      {
+        "name": "Google Drive",
+        "category": "storage"
+      }
+    ]
+  }
+}

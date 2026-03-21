@@ -1,0 +1,169 @@
+channel: goals-and-objectives
+purpose: Agent setup, integrated memory, BDI, MCE and more
+topic: "Canonical source for agent beliefs, desires and Intentions (BDI)"
+
+agents:
+  # --- Storage & Documents ---
+  onedrive-sharepoint:
+    name: OneDrive and SharePoint
+    connector: OneDrive / SharePoint (Files search)
+    status: connected
+    capabilities:
+      - file storage
+      - document sharing
+      - file search
+
+  google-drive:
+    name: Google Drive
+    connector: Google Drive
+    status: connected
+    capabilities:
+      - file storage
+      - document management
+
+  google-sheets:
+    name: Google Sheets Workflow Steps
+    connector: Google Sheets (Pipedream)
+    status: connected
+    capabilities:
+      - spreadsheet automation
+      - workflow data processing
+
+  # --- Calendar & Communication ---
+  outlook-calendar:
+    name: Outlook Calendar
+    connector: Outlook
+    status: connected
+    capabilities:
+      - calendar management
+      - meeting scheduling
+
+  # --- Project Management ---
+  linear:
+    name: Linear
+    connector: Linear OAuth
+    status: connected
+    capabilities:
+      - issue tracking
+      - project management
+      - sprint planning
+      - BDI goal tracking
+
+  notion:
+    name: Notion
+    connector: Notion MCP
+    status: connected
+    capabilities:
+      - knowledge base
+      - documentation
+      - integrated memory store
+
+  # --- IDE / Code Agents ---
+  cursor:
+    name: Cursor
+    connector: Slack/GitHub (Cloud Agent)
+    status: connected
+    routing: slack-channel + github-repo
+    capabilities:
+      - code generation
+      - code review
+      - repository management
+      - pull request automation
+      - agent tooling setup
+
+  codex:
+    name: Codex
+    connector: Slack channel / API
+    status: available
+    routing: slack-channel
+    capabilities:
+      - code generation
+      - development tasks
+
+  replit:
+    name: Replit
+    connector: Slack channel
+    status: available
+    routing: slack-channel
+    capabilities:
+      - prototyping
+      - rapid deployment
+      - hosted environments
+
+  blackbox:
+    name: BLACKBOX Agent
+    connector: Blackbox AI IDE
+    status: available
+    routing: local-ide
+    capabilities:
+      - code completion
+      - code search
+      - IDE-based AI assistance
+
+  sourcery:
+    name: Sourcery
+    connector: GitHub / IDE
+    status: available
+    capabilities:
+      - code quality
+      - automated refactoring
+      - code review
+
+  kilo:
+    name: Kilo
+    connector: Kilo Code IDE
+    status: available
+    routing: local-ide
+    capabilities:
+      - local code editing
+      - IDE-based AI assistance
+
+  # --- AI Assistants ---
+  chatgpt:
+    name: ChatGPT
+    connector: Slack channel / API
+    status: available
+    routing: slack-channel
+    capabilities:
+      - general reasoning
+      - analysis
+      - content generation
+
+  computer:
+    name: Computer
+    connector: Anthropic Computer Use
+    status: available
+    capabilities:
+      - UI interaction
+      - browser automation
+      - data gathering
+      - agent setup coordination
+
+  # --- Deployment & Infrastructure ---
+  vercel:
+    name: Vercel
+    connector: Vercel OAuth
+    status: connected
+    capabilities:
+      - deployment
+      - hosting
+      - preview environments
+
+  # --- Observability ---
+  langsmith-fleet:
+    name: LangSmith Fleet
+    connector: API (bash/scripts)
+    status: available
+    routing: api
+    capabilities:
+      - LLM observability
+      - prompt tracing
+      - evaluation
+      - agent fleet monitoring
+
+routing:
+  primary: slack
+  channels:
+    - goals-and-objectives
+  github_repos:
+    - hoagsman/cursor
