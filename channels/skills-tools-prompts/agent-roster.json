@@ -1,0 +1,81 @@
+{
+  "channel": {
+    "name": "skills-tools-prompts",
+    "purpose": "Continuously synced database of skills, tools, integrations, commands, and prompts for agents",
+    "topic": "Agent skills, tools, commands, functions and automation workflows"
+  },
+  "agents": {
+    "primary": [
+      {
+        "name": "Computer",
+        "roles": ["automation", "ui-interaction"]
+      }
+    ],
+    "integrations": [
+      {
+        "name": "Computer",
+        "category": "automation"
+      },
+      {
+        "name": "Linear",
+        "category": "project-management"
+      },
+      {
+        "name": "LangSmith Fleet",
+        "category": "observability"
+      },
+      {
+        "name": "Notion",
+        "category": "knowledge-base"
+      },
+      {
+        "name": "Outlook Calendar",
+        "category": "scheduling"
+      },
+      {
+        "name": "Cursor",
+        "category": "development"
+      },
+      {
+        "name": "Kilo",
+        "category": "operations"
+      },
+      {
+        "name": "Vercel",
+        "category": "deployment"
+      },
+      {
+        "name": "Sourcery",
+        "category": "code-review"
+      },
+      {
+        "name": "Codex",
+        "category": "development"
+      },
+      {
+        "name": "OneDrive and SharePoint",
+        "category": "storage"
+      },
+      {
+        "name": "ChatGPT",
+        "category": "ai-reasoning"
+      },
+      {
+        "name": "BLACKBOX Agent",
+        "category": "ai-reasoning"
+      },
+      {
+        "name": "Replit",
+        "category": "development"
+      },
+      {
+        "name": "Google Sheets Workflow Steps",
+        "category": "data-workflow"
+      },
+      {
+        "name": "Google Drive",
+        "category": "storage"
+      }
+    ]
+  }
+}
