@@ -1,0 +1,180 @@
+# Alpha Loop Capital — Current State Workflows (Phase 1)
+# Operational workflows as of 2026-03-21
+# Last updated: 2026-03-21
+
+version: "1.0.0"
+phase: 1
+status: operational
+
+# ═══════════════════════════════════════════════════════════════════════
+# CORE INFRASTRUCTURE STATE
+# ═══════════════════════════════════════════════════════════════════════
+
+infrastructure:
+  n8n:
+    status: active
+    instance: ClawsTAK
+    type: self-hosted
+    primary_use: central workflow orchestration, webhook routing, API integration
+    active_workflows:
+      - openclaw-cron-dispatch
+      - webhook-to-slack-routing
+      - agent-mention-fanout
+
+  openclaw_gateway:
+    status: active
+    primary_use: autonomous agent loops, cron jobs
+    pattern: "webhook POST > n8n > Code Node > Slack"
+    endpoints:
+      - /webhook/openclaw-cron
+
+  slack:
+    status: active
+    channels: "41+"
+    primary_use: human-agent and agent-to-agent interface
+    key_channels:
+      orchestration: ["#agent-to-agent", "#automations"]
+      management: ["#daily-log", "#goals-and-objectives", "#skills-tools-prompts"]
+      operations: ["#bot-notifications", "#n8n-workflows"]
+      product: ["#paperclip", "#integrations-overview"]
+      community: ["#agent-submissions", "#agent-marketplace", "#readme"]
+      insights: ["#tom-insights"]
+
+  mcp_servers:
+    status: active
+    count: 12
+    servers: [slack, notion, vercel, sentry, linear, supabase, neon, firecrawl, github, cloudflare, aws, context7]
+
+# ═══════════════════════════════════════════════════════════════════════
+# ACTIVE WORKFLOW PATTERNS
+# ═══════════════════════════════════════════════════════════════════════
+
+workflow_patterns:
+
+  # ─── Pattern 1: Webhook Reply (Zero Token Waste) ─────────────────
+
+  webhook_reply:
+    name: Webhook Reply Pattern
+    status: active
+    priority: critical
+    description: >
+      Zero token waste on routing. Agents only consume tokens when reacting.
+    flow:
+      1_trigger: "OpenClaw Cron fires on schedule"
+      2_dispatch: "webhook POST to n8n /webhook/openclaw-cron"
+      3_format: "n8n Code Node formats message + @mentions"
+      4_post: "Slack posts to #agent-to-agent"
+      5_react: "Tagged agents react (token consumption only here)"
+    token_efficiency: "Zero tokens wasted on routing. 100% of agent tokens go to useful work."
+
+  # ─── Pattern 2: Agent-to-Agent Communication ─────────────────────
+
+  agent_to_agent:
+    name: Agent-to-Agent Communication
+    status: active
+    channel: "#agent-to-agent"
+    orchestrator: manus
+    description: >
+      Multi-agent orchestration via Slack. Manus dispatches, agents react.
+    flow:
+      1_trigger: "Task arrives (human, cron, or agent-initiated)"
+      2_orchestrate: "Manus decomposes task and identifies agent(s)"
+      3_dispatch: "Post to #agent-to-agent with @mentions"
+      4_execute: "Tagged agents execute their portion"
+      5_report: "Results posted back to thread or target channel"
+
+  # ─── Pattern 3: Sentry Auto-Investigation ────────────────────────
+
+  sentry_auto_investigate:
+    name: Sentry Auto-Investigation
+    status: active
+    trigger: sentry-issue-posted
+    agent: sourcery
+    description: >
+      Sourcery automatically investigates issues posted by Sentry.
+    flow:
+      1_trigger: "Sentry posts issue to Slack"
+      2_detect: "Sourcery detects @Sentry mention"
+      3_investigate: "Sourcery auto-investigates the issue"
+      4_report: "Investigation results posted to thread"
+
+  # ─── Pattern 4: Code Development Pipeline ────────────────────────
+
+  code_development:
+    name: Code Development Pipeline
+    status: active
+    agents: [cursor, codex, replit, blackbox_agent, kilo]
+    description: >
+      Multi-agent code development via Slack + GitHub.
+    flow:
+      1_trigger: "Task assigned in Slack or GitHub issue"
+      2_develop: "Cursor/Codex/Kilo generates code on branch"
+      3_review: "PR created, Sourcery reviews"
+      4_deploy: "Merge triggers Vercel deployment"
+      5_monitor: "LangSmith traces, Sentry monitors"
+
+  # ─── Pattern 5: Knowledge Sync ──────────────────────────────────
+
+  knowledge_sync:
+    name: Obsidian ↔ Notion Bidirectional Sync
+    status: active
+    agents: [notion, notion_ai]
+    description: >
+      Second Brain pattern: Obsidian vault syncs bidirectionally with Notion.
+    flow:
+      1_source: "Content created in Obsidian or Notion"
+      2_sync: "Bidirectional sync propagates changes"
+      3_enrich: "Notion AI enriches and synthesizes"
+      4_access: "All agents can query via Notion MCP"
+
+  # ─── Pattern 6: Daily Log & Progress ────────────────────────────
+
+  daily_log:
+    name: Daily Log & Progress Tracking
+    status: active
+    channel: "#daily-log"
+    agents: [manus, claude, ellie]
+    description: >
+      Daily progress updates and founder log.
+    flow:
+      1_trigger: "Daily schedule or human prompt"
+      2_gather: "Manus/Claude gather status from agents"
+      3_synthesize: "Claude synthesizes daily summary"
+      4_post: "Summary posted to #daily-log"
+
+# ═══════════════════════════════════════════════════════════════════════
+# AGENT FLEET STATUS
+# ═══════════════════════════════════════════════════════════════════════
+
+agent_fleet:
+  total: 28
+  active: 18
+  connected: 10
+  categories:
+    primary_orchestration: [manus, computer, claude]
+    specialized_assistants: [ellie, hoags, kat, hailey, danielle, sloane, ekt_agent]
+    code_engineering: [cursor, codex, replit, blackbox_agent, kilo]
+    quality_observability: [sourcery, langsmith_fleet]
+    knowledge_pm: [notion, notion_ai, linear, linear_asks]
+    productivity: [google_drive, google_sheets, tom_gmail, onedrive_sharepoint, outlook_calendar]
+    other: [chatgpt, figma, vercel]
+
+# ═══════════════════════════════════════════════════════════════════════
+# PROTOCOL STATUS
+# ═══════════════════════════════════════════════════════════════════════
+
+protocols:
+  bdi:
+    name: Beliefs-Desires-Intentions
+    status: active
+    channel: "#goals-and-objectives"
+  l8p:
+    name: l8p Self-Improvement Protocol
+    status: active
+  mce:
+    name: Meta-Context Engineering
+    status: active
+  a2a:
+    name: Agent-to-Agent Protocol
+    status: in-development
+    channel: "#agent-to-agent"

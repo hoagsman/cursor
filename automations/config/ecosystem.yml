@@ -1,0 +1,116 @@
+# Alpha Loop Capital — Master Ecosystem Configuration
+# Last updated: 2026-03-21
+# Source of truth for core infrastructure and system-wide settings
+
+version: "1.0.0"
+organization: Alpha Loop Capital (ALC)
+workspace: ClawsTAK
+
+# ─── Core Infrastructure ─────────────────────────────────────────────
+
+infrastructure:
+
+  n8n:
+    name: n8n (ClawsTAK Instance)
+    role: Central workflow orchestration, webhook routing, API integration
+    status: active
+    type: self-hosted
+    capabilities:
+      - webhook routing
+      - API integration
+      - workflow orchestration
+      - cron scheduling
+      - code node execution
+      - Slack posting
+    endpoints:
+      webhook_base: "/webhook/"
+      openclaw_cron: "/webhook/openclaw-cron"
+
+  openclaw_gateway:
+    name: OpenClaw Gateway
+    role: Autonomous agent loops, cron jobs via webhook POST to n8n
+    status: active
+    type: gateway
+    capabilities:
+      - autonomous agent loops
+      - cron job scheduling
+      - webhook POST dispatch
+    pattern: "OpenClaw Cron > webhook POST > n8n > Code Node > Slack"
+
+  slack_workspace:
+    name: ClawsTAK Slack Workspace
+    role: Primary human-agent and agent-to-agent interface
+    status: active
+    channel_count: "41+"
+    capabilities:
+      - human-agent communication
+      - agent-to-agent communication
+      - channel-based routing
+      - webhook ingestion
+      - bot framework
+
+  mcp_servers:
+    name: MCP Server Fleet
+    role: Standardized tool access for agents
+    status: active
+    servers:
+      - slack
+      - notion
+      - vercel
+      - sentry
+      - linear
+      - supabase
+      - neon
+      - firecrawl
+      - github
+      - cloudflare
+      - aws
+      - context7
+
+# ─── Key Workflow Pattern ─────────────────────────────────────────────
+
+key_pattern:
+  name: Webhook Reply Pattern (Zero Token Waste)
+  description: >
+    Agents only consume tokens when reacting. Zero token waste on routing.
+  flow:
+    - step: OpenClaw Cron fires
+    - step: webhook POST to n8n /webhook/openclaw-cron
+    - step: n8n Code Node formats message + @mentions
+    - step: Slack posts to #agent-to-agent
+    - step: Tagged agents react (token consumption only here)
+
+# ─── Protocols ────────────────────────────────────────────────────────
+
+protocols:
+  bdi:
+    name: Beliefs-Desires-Intentions (BDI)
+    status: active
+    channel: "#goals-and-objectives"
+    description: Canonical source for agent beliefs, desires, and intentions
+
+  l8p:
+    name: l8p Protocol
+    status: active
+    description: Self-improving automation protocol for workflow evaluation and optimization
+
+  meta_context_engineering:
+    name: Meta-Context Engineering (MCE)
+    status: active
+    description: Context synthesis across agents for coherent multi-agent workflows
+
+  a2a:
+    name: Agent-to-Agent Protocol
+    status: in-development
+    channel: "#agent-to-agent"
+    description: Structured context passing and agent handoff protocols
+
+# ─── Routing Defaults ─────────────────────────────────────────────────
+
+routing:
+  primary: slack
+  fallback: webhook
+  priority_rules:
+    critical: "double-post to #investment-ops + standard fan-out"
+    normal: "standard fan-out to relevant channels"
+    low: "post without @mentions"

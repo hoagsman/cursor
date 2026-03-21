@@ -1,0 +1,209 @@
+# Alpha Loop Capital — Integration Matrix
+# All platform integrations, connectors, and their capabilities
+# Last updated: 2026-03-21
+
+version: "1.0.0"
+
+# ═══════════════════════════════════════════════════════════════════════
+# INTEGRATION MATRIX
+# ═══════════════════════════════════════════════════════════════════════
+
+integrations:
+
+  # ─── Knowledge & Documentation ────────────────────────────────────
+
+  notion:
+    name: Notion
+    provider: notion
+    connector: Notion MCP
+    status: connected
+    bidirectional: true
+    sync_target: Obsidian vault (Second Brain)
+    mcp_server: true
+    data_flow:
+      inbound:
+        - agent writes to Notion databases/pages
+        - Obsidian vault sync
+      outbound:
+        - Notion AI generates content
+        - database queries via SQL
+        - search results
+    capabilities:
+      - page CRUD
+      - database management
+      - SQL queries on data sources
+      - comments and discussions
+      - meeting notes
+      - canvas/view management
+
+  notion_ai:
+    name: Notion AI
+    provider: notion
+    connector: Notion MCP
+    status: connected
+    mcp_server: true
+    data_flow:
+      inbound: [queries, prompts]
+      outbound: [generated content, summaries, analysis]
+    capabilities:
+      - AI content generation
+      - knowledge synthesis
+      - summarization
+      - Q&A over workspace
+
+  # ─── Project Management ──────────────────────────────────────────
+
+  linear:
+    name: Linear
+    provider: linear
+    connector: Linear OAuth
+    status: connected
+    mcp_server: true
+    data_flow:
+      inbound:
+        - issue creation from agents
+        - status updates from workflows
+      outbound:
+        - issue notifications
+        - sprint status
+        - project updates
+    capabilities:
+      - issue CRUD
+      - project management
+      - cycle/sprint tracking
+      - initiative management
+      - document management
+      - milestone tracking
+
+  linear_asks:
+    name: Linear Asks
+    provider: linear
+    connector: Linear OAuth
+    status: connected
+    data_flow:
+      inbound: [natural language queries]
+      outbound: [structured issue data, project summaries]
+    capabilities:
+      - conversational issue triage
+      - natural language project queries
+      - issue search and filter
+
+  # ─── Google Suite ────────────────────────────────────────────────
+
+  google_drive:
+    name: Google Drive
+    provider: google
+    connector: Google Drive
+    status: connected
+    data_flow:
+      inbound: [file uploads, document creation]
+      outbound: [file sharing, document access]
+    capabilities:
+      - file storage
+      - document management
+      - sharing and permissions
+
+  google_sheets:
+    name: Google Sheets Workflow Steps
+    provider: google
+    connector: Google Sheets (Pipedream)
+    status: connected
+    data_flow:
+      inbound: [workflow step data, automation outputs]
+      outbound: [spreadsheet data, triggers]
+    capabilities:
+      - spreadsheet automation
+      - workflow data processing
+      - data pipeline steps
+
+  tom_gmail:
+    name: Tom - Gmail
+    provider: google
+    connector: Gmail with Calendar
+    status: connected
+    data_flow:
+      inbound: [email sends, calendar events]
+      outbound: [email notifications, calendar updates]
+    capabilities:
+      - email send/receive
+      - calendar integration
+      - contact management
+
+  # ─── Microsoft Suite ─────────────────────────────────────────────
+
+  onedrive_sharepoint:
+    name: OneDrive and SharePoint
+    provider: microsoft
+    connector: OneDrive / SharePoint (Files search)
+    status: connected
+    data_flow:
+      inbound: [file uploads, document creation]
+      outbound: [file search results, document access]
+    capabilities:
+      - file storage
+      - document sharing
+      - file search
+      - SharePoint site access
+
+  outlook_calendar:
+    name: Outlook Calendar
+    provider: microsoft
+    connector: Outlook
+    status: connected
+    data_flow:
+      inbound: [event creation, meeting scheduling]
+      outbound: [calendar notifications, availability]
+    capabilities:
+      - calendar management
+      - meeting scheduling
+      - availability tracking
+
+  # ─── Design ─────────────────────────────────────────────────────
+
+  figma:
+    name: Figma
+    provider: figma
+    connector: Figma Slack integration
+    status: connected
+    data_flow:
+      inbound: [design file links]
+      outbound: [design previews, comment notifications]
+    capabilities:
+      - design collaboration
+      - prototype sharing
+      - design notifications
+      - comment threads
+
+  # ─── Deployment ──────────────────────────────────────────────────
+
+  vercel:
+    name: Vercel
+    provider: vercel
+    connector: Vercel OAuth
+    status: connected
+    mcp_server: true
+    data_flow:
+      inbound: [deploy triggers, env config]
+      outbound: [deployment status, preview URLs, release notifications]
+    capabilities:
+      - deployment management
+      - preview environments
+      - hosting
+      - domain configuration
+      - environment variables
+
+# ═══════════════════════════════════════════════════════════════════════
+# INTEGRATION SUMMARY
+# ═══════════════════════════════════════════════════════════════════════
+
+summary:
+  total_integrations: 11
+  by_provider:
+    google: 3
+    microsoft: 2
+    notion: 2
+    linear: 2
+    figma: 1
+    vercel: 1
+  with_mcp: [notion, notion_ai, linear, vercel]
+  bidirectional_sync: [notion]  # Obsidian vault

@@ -1,0 +1,169 @@
+# Alpha Loop Capital — Agent Orchestration Patterns
+# How agents coordinate, delegate, and hand off work
+# Last updated: 2026-03-21
+
+version: "1.0.0"
+
+# ═══════════════════════════════════════════════════════════════════════
+# ORCHESTRATION HIERARCHY
+# ═══════════════════════════════════════════════════════════════════════
+
+hierarchy:
+  tier_0_strategic:
+    name: Strategic Layer
+    agents: [hoags]
+    role: Executive oversight, priority setting, fleet management
+    delegates_to: [tier_1_orchestration]
+
+  tier_1_orchestration:
+    name: Orchestration Layer
+    agents: [manus, computer, claude]
+    role: Task decomposition, workflow building, cross-agent coordination
+    delegates_to: [tier_2_specialized, tier_2_engineering, tier_2_knowledge]
+
+  tier_2_specialized:
+    name: Specialized Agents
+    agents: [ellie, kat, ekt_agent, hailey, danielle, sloane]
+    role: Domain-specific tasks (creativity, teaching, personal assistance)
+
+  tier_2_engineering:
+    name: Engineering Agents
+    agents: [cursor, codex, replit, blackbox_agent, kilo]
+    role: Code generation, development, prototyping
+
+  tier_2_knowledge:
+    name: Knowledge & PM Agents
+    agents: [notion, notion_ai, linear, linear_asks]
+    role: Documentation, project tracking, knowledge synthesis
+
+  tier_3_quality:
+    name: Quality & Observability
+    agents: [sourcery, langsmith_fleet]
+    role: Code review, bug investigation, performance monitoring
+
+  tier_3_productivity:
+    name: Productivity Integrations
+    agents: [google_drive, google_sheets, tom_gmail, onedrive_sharepoint, outlook_calendar, figma, vercel, chatgpt]
+    role: File management, scheduling, email, design, deployment
+
+# ═══════════════════════════════════════════════════════════════════════
+# ORCHESTRATION PATTERNS
+# ═══════════════════════════════════════════════════════════════════════
+
+patterns:
+
+  # ─── Pattern: Manus Dispatch ─────────────────────────────────────
+
+  manus_dispatch:
+    name: Manus Autonomous Dispatch
+    orchestrator: manus
+    trigger: human-message, cron, or agent-request
+    description: >
+      Manus receives a task, decomposes it into subtasks, identifies the
+      right agents, and dispatches via Slack @mentions. Agents react only
+      when tagged (zero token waste on routing).
+    flow:
+      - step: Task received by Manus
+        channel: "#agent-to-agent or #automations"
+      - step: Manus analyzes and decomposes
+        token_use: orchestrator-only
+      - step: Manus posts with @mentions for target agents
+        channel: "#agent-to-agent"
+      - step: Tagged agents execute their portion
+        token_use: per-agent on reaction
+      - step: Results aggregated in thread
+      - step: Manus synthesizes final output
+    delegation_map:
+      code_tasks: [cursor, codex, replit]
+      research: [computer, chatgpt, claude]
+      documentation: [notion, notion_ai]
+      project_tracking: [linear]
+      deployment: [vercel]
+      design: [figma]
+      scheduling: [outlook_calendar]
+
+  # ─── Pattern: Sentry Cascade ─────────────────────────────────────
+
+  sentry_cascade:
+    name: Sentry Issue Cascade
+    trigger: sentry-alert
+    description: >
+      Automatic cascade from bug detection through investigation,
+      scoping, implementation, deployment, and verification.
+    flow:
+      - step: Sentry detects error
+        agent: sentry
+      - step: Sourcery auto-investigates
+        agent: sourcery
+      - step: LangSmith provides traces
+        agent: langsmith_fleet
+      - step: Claude scopes the fix
+        agent: claude
+      - step: Cursor implements
+        agent: cursor
+      - step: Vercel deploys
+        agent: vercel
+      - step: Sourcery verifies
+        agent: sourcery
+    status: partially-active  # Steps 1-2 active, 3-7 planned
+
+  # ─── Pattern: Knowledge Pipeline ─────────────────────────────────
+
+  knowledge_pipeline:
+    name: Knowledge Ingestion Pipeline
+    trigger: content-created
+    description: >
+      New content flows from any source through Notion/Obsidian sync,
+      gets enriched by Notion AI, and becomes queryable by all agents.
+    flow:
+      - step: Content created (Slack, doc, code, meeting notes)
+      - step: Captured in Notion or Obsidian
+      - step: Bidirectional sync propagates
+      - step: Notion AI enriches and indexes
+      - step: Available to all agents via Notion MCP
+
+  # ─── Pattern: BDI Goal Alignment ────────────────────────────────
+
+  bdi_goal_alignment:
+    name: BDI Protocol Goal Alignment
+    channel: "#goals-and-objectives"
+    trigger: goal-update or periodic-review
+    description: >
+      Agents check beliefs, desires, and intentions against the canonical
+      source in #goals-and-objectives before executing strategic tasks.
+    flow:
+      - step: Goal posted/updated in #goals-and-objectives
+      - step: Agents read updated BDI state
+      - step: Task execution aligned to current intentions
+      - step: Outcomes feed back into belief updates
+
+# ═══════════════════════════════════════════════════════════════════════
+# ROUTING RULES
+# ═══════════════════════════════════════════════════════════════════════
+
+routing:
+  primary_channel: slack
+  fallback: webhook
+
+  priority_routing:
+    critical:
+      action: "Double-post to #investment-ops + standard fan-out"
+      mentions: "@channel + specific agent @mentions"
+    normal:
+      action: "Standard fan-out to relevant channel"
+      mentions: "Specific agent @mentions only"
+    low:
+      action: "Post without @mentions"
+      mentions: "No direct mentions"
+
+  channel_routing:
+    orchestration: "#agent-to-agent"
+    automation_ops: "#automations"
+    daily_updates: "#daily-log"
+    goals: "#goals-and-objectives"
+    skills: "#skills-tools-prompts"
+    notifications: "#bot-notifications"
+    n8n_ops: "#n8n-workflows"
+    insights: "#tom-insights"
+    product: "#paperclip"
+    integrations: "#integrations-overview"

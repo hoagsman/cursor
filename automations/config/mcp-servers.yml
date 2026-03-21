@@ -1,0 +1,202 @@
+# Alpha Loop Capital — MCP Server Registry
+# Standardized tool access for all agents
+# Last updated: 2026-03-21
+
+version: "1.0.0"
+
+mcp_servers:
+
+  # ─── Communication & Collaboration ───────────────────────────────
+
+  slack:
+    name: Slack MCP
+    provider: slack
+    status: connected
+    tools:
+      - channel read/write
+      - search (public + private)
+      - user lookup
+      - canvas create/read/update
+      - thread management
+      - scheduled messages
+    used_by:
+      - manus
+      - cursor
+      - ellie
+      - claude
+      - computer
+
+  notion:
+    name: Notion MCP
+    provider: notion
+    status: connected
+    tools:
+      - page create/read/update
+      - database query (SQL mode)
+      - search
+      - comments
+      - data source management
+    used_by:
+      - notion
+      - notion-ai
+      - manus
+      - cursor
+
+  # ─── Development & Deployment ────────────────────────────────────
+
+  github:
+    name: GitHub MCP
+    provider: github
+    status: connected
+    tools:
+      - repository management
+      - pull request automation
+      - issue tracking
+      - code search
+    used_by:
+      - cursor
+      - codex
+      - kilo
+      - sourcery
+
+  vercel:
+    name: Vercel MCP
+    provider: vercel
+    status: connected
+    tools:
+      - deployment management
+      - preview environments
+      - domain configuration
+      - environment variables
+    used_by:
+      - vercel
+      - cursor
+
+  sentry:
+    name: Sentry MCP
+    provider: sentry
+    status: connected
+    tools:
+      - error tracking
+      - issue investigation
+      - performance monitoring
+      - alert management
+    used_by:
+      - sourcery
+      - langsmith-fleet
+      - cursor
+
+  # ─── Data & Database ─────────────────────────────────────────────
+
+  supabase:
+    name: Supabase MCP
+    provider: supabase
+    status: connected
+    tools:
+      - database queries (SQL)
+      - migrations
+      - edge functions
+      - auth management
+      - storage
+    used_by:
+      - cursor
+      - codex
+      - manus
+
+  neon:
+    name: Neon MCP
+    provider: neon
+    status: connected
+    tools:
+      - serverless Postgres
+      - branching
+      - connection pooling
+    used_by:
+      - cursor
+      - codex
+
+  # ─── Project Management ──────────────────────────────────────────
+
+  linear:
+    name: Linear MCP
+    provider: linear
+    status: connected
+    tools:
+      - issue create/update
+      - project management
+      - cycle tracking
+      - search
+      - comments
+    used_by:
+      - linear
+      - linear-asks
+      - cursor
+      - manus
+
+  # ─── Research & Scraping ─────────────────────────────────────────
+
+  firecrawl:
+    name: Firecrawl MCP
+    provider: firecrawl
+    status: connected
+    tools:
+      - web scraping
+      - URL crawling
+      - content extraction
+    used_by:
+      - manus
+      - computer
+      - claude
+
+  context7:
+    name: Context7 MCP
+    provider: context7
+    status: connected
+    tools:
+      - library documentation lookup
+      - code snippet retrieval
+      - API reference search
+    used_by:
+      - cursor
+      - codex
+
+  # ─── Cloud Infrastructure ────────────────────────────────────────
+
+  cloudflare:
+    name: Cloudflare MCP
+    provider: cloudflare
+    status: connected
+    tools:
+      - Workers deployment
+      - DNS management
+      - R2 storage
+      - D1 database
+    used_by:
+      - cursor
+      - manus
+
+  aws:
+    name: AWS Knowledge MCP
+    provider: aws
+    status: connected
+    tools:
+      - documentation search
+      - regional availability
+      - architecture guidance
+      - SOP retrieval
+    used_by:
+      - cursor
+      - claude
+
+# ─── Summary ────────────────────────────────────────────────────────
+
+summary:
+  total_servers: 12
+  connected: 12
+  categories:
+    communication: [slack, notion]
+    development: [github, vercel, sentry]
+    data: [supabase, neon]
+    project_management: [linear]
+    research: [firecrawl, context7]
+    cloud: [cloudflare, aws]

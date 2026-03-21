@@ -1,0 +1,204 @@
+# Alpha Loop Capital — Slack Channel → Agent Routing Map
+# Complete mapping of all known channels to their agent assignments
+# Last updated: 2026-03-21
+
+version: "1.0.0"
+workspace: ClawsTAK
+total_channels: "41+"
+
+# ═══════════════════════════════════════════════════════════════════════
+# CHANNEL MAP
+# ═══════════════════════════════════════════════════════════════════════
+
+channels:
+
+  # ─── Orchestration & Automation ──────────────────────────────────
+
+  agent-to-agent:
+    id: C0ADSPUFEQJ
+    topic: "AI | Agent Orchestration"
+    purpose: Agent-to-agent communication, orchestration, and multi-agent workflows
+    created_by: Tom
+    agents_present:
+      - manus (orchestrator)
+      - computer
+      - claude
+      - ellie
+      - cursor
+      - codex
+      - replit
+      - blackbox_agent
+      - kilo
+      - sourcery
+      - langsmith_fleet
+      - chatgpt
+      - notion
+      - notion_ai
+      - linear
+      - linear_asks
+      - vercel
+      - google_drive
+      - google_sheets
+      - onedrive_sharepoint
+      - outlook_calendar
+      - figma
+      - tom_gmail
+    primary_use: Central agent dispatch and inter-agent task handoff
+    workflow_integration: "OpenClaw Cron → n8n → this channel"
+
+  automations:
+    id: C0AMTBQ7G6P
+    purpose: Automation workflow management and structure
+    created_by: Tom
+    agents_present:
+      - manus
+      - ellie
+      - cursor
+      - blackbox_agent
+      - computer
+      - claude
+      - linear
+      - langsmith_fleet
+      - outlook_calendar
+      - kilo
+      - vercel
+      - sourcery
+      - codex
+      - onedrive_sharepoint
+      - chatgpt
+      - replit
+      - google_sheets
+      - google_drive
+      - figma
+      - notion
+      - notion_ai
+      - tom_gmail
+    primary_use: Full automations workflow structure and management
+
+  n8n-workflows:
+    id: C0AF447GN20
+    topic: "Automation | n8n Workflows"
+    purpose: n8n automation workflows and monitoring
+    created_by: Ellie
+    primary_use: n8n workflow status, errors, and monitoring
+
+  bot-notifications:
+    id: C0AEU4DMVRR
+    topic: "Automation | Bot Alerts"
+    purpose: Automated bot notifications and alerts
+    created_by: Ellie
+    primary_use: Centralized bot alert channel
+
+  # ─── Management & Strategy ──────────────────────────────────────
+
+  daily-log:
+    id: C0AFUQ460M6
+    topic: "HQ | Daily Progress"
+    purpose: Daily progress updates and founder log
+    created_by: Ellie
+    agents_present:
+      - manus
+      - claude
+      - ellie
+      - all integrations
+    primary_use: Daily summaries, progress tracking
+
+  goals-and-objectives:
+    id: C0ANU13SJ00
+    topic: "Canonical source for agent beliefs, desires and Intentions (BDI)"
+    purpose: Agent setup, integrated memory, BDI, MCE and more
+    created_by: Tom
+    primary_use: BDI protocol canonical source, agent goal alignment
+
+  tom-insights:
+    id: C0ANCM3CSAD
+    topic: "Agent thoughts, pattern recognition, thoughts, ideas, objections regarding Tom Hogan"
+    purpose: Agent insights related to Tom Hogan
+    created_by: Tom
+    primary_use: Agent-generated insights about the founder
+
+  # ─── Skills & Tools ─────────────────────────────────────────────
+
+  skills-tools-prompts:
+    id: C0ANCLE98RF
+    topic: "Agent skills, tools, commands, functions and automation workflows"
+    purpose: Continuously synced database of skills, tools, integrations, commands, and prompts
+    created_by: Tom
+    primary_use: Agent capability registry and prompt library
+
+  # ─── Product & Business ──────────────────────────────────────────
+
+  paperclip:
+    id: C0AMXNAR0KY
+    topic: "Paperclip AI (Github.com/paperclipai/paperclip) and paperclip.ing"
+    purpose: All things related to Paperclaw AI businesses, roles, rules, instructions, automations, ideas
+    created_by: Tom
+    primary_use: Paperclip AI product development
+
+  integrations-overview:
+    id: C0ANU0G3ZG8
+    topic: "Overview of all integrations, connectors, APIs, and roles & responsibilities"
+    purpose: Integrations, workflows, automations
+    created_by: Tom
+    agents_present: [notion_ai, tom_gmail]
+    primary_use: Integration catalog and reference
+
+  # ─── Agent Ecosystem ─────────────────────────────────────────────
+
+  agent-submissions:
+    id: C0AFDDH1J65
+    topic: "AI | Agent Submissions"
+    purpose: New agent submissions and moderation queue
+    created_by: Ellie
+    primary_use: Pipeline for new agent onboarding
+
+  agent-marketplace:
+    id: C0AFUQ3BDFS
+    topic: "AI | Agent Marketplace"
+    purpose: Marketplace activity and matchmaking
+    created_by: Ellie
+    primary_use: Agent marketplace operations
+
+  readme:
+    id: C0AEK2PH3F1
+    topic: "Universal README.md"
+    purpose: Agent, Integrations, and Connections README.md
+    created_by: Ellie
+    primary_use: Universal onboarding and reference documentation
+
+# ═══════════════════════════════════════════════════════════════════════
+# ROUTING RULES
+# ═══════════════════════════════════════════════════════════════════════
+
+routing_rules:
+  default_dispatch: "#agent-to-agent"
+  automation_ops: "#automations"
+  alerts: "#bot-notifications"
+  n8n_monitoring: "#n8n-workflows"
+  daily_updates: "#daily-log"
+  goal_alignment: "#goals-and-objectives"
+  skills_registry: "#skills-tools-prompts"
+
+  priority_overrides:
+    critical:
+      channels: ["#investment-ops", "original channel"]
+      mentions: "@channel + targeted agents"
+    normal:
+      channels: ["appropriate topic channel"]
+      mentions: "targeted agent @mentions"
+    low:
+      channels: ["appropriate topic channel"]
+      mentions: "none"
+
+# ═══════════════════════════════════════════════════════════════════════
+# UNKNOWN / UNAUDITED CHANNELS
+# The workspace has 41+ channels. The following are known by name only.
+# Full audit needed to map agents and routing for remaining channels.
+# ═══════════════════════════════════════════════════════════════════════
+
+unaudited_channels:
+  note: >
+    The ClawsTAK workspace contains 41+ channels. The channels listed above
+    are those confirmed via direct audit. Remaining channels require manual
+    review to document agent presence and routing rules.
+  follow_up_action: "Run full workspace channel audit via Slack API"

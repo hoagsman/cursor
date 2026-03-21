@@ -1,0 +1,248 @@
+# Alpha Loop Capital — AI Agent Detailed Capabilities
+# Detailed configuration for all AI-powered agents
+# Last updated: 2026-03-21
+
+version: "1.0.0"
+
+# ─── Primary Orchestration ────────────────────────────────────────────
+
+manus:
+  name: Manus
+  provider: manus
+  tier: primary
+  autonomy_level: high
+  token_model: on-reaction
+  routing:
+    primary: slack
+    channels: ["#agent-to-agent", "#automations", "#daily-log"]
+  orchestration:
+    can_spawn_subtasks: true
+    can_delegate_to: [computer, claude, cursor, codex, ellie]
+    workflow_builder: true
+    end_to_end: true
+  integrations:
+    - slack (read/write/search)
+    - iMessage bridge
+    - n8n webhook triggers
+  constraints:
+    - Messages sent in Slack visible in Manus web app
+    - Tag @Manus to activate
+
+computer:
+  name: Computer
+  provider: anthropic
+  tier: primary
+  autonomy_level: high
+  token_model: on-activation
+  routing:
+    primary: direct-api
+    channels: ["#agent-to-agent", "#automations"]
+  orchestration:
+    can_control_ui: true
+    can_browse_web: true
+    screen_interaction: true
+  integrations:
+    - browser automation
+    - UI interaction
+    - screen capture
+  constraints:
+    - Requires visual context for UI tasks
+    - Best for browser-based workflows
+
+claude:
+  name: Claude
+  provider: anthropic
+  tier: primary
+  autonomy_level: high
+  token_model: on-reaction
+  routing:
+    primary: slack
+    secondary: claude-desktop
+    channels: ["#agent-to-agent", "#automations"]
+  orchestration:
+    architectural_design: true
+    complex_reasoning: true
+    feedback_loops: true
+  integrations:
+    - slack (via Kilo Code / Claude Desktop)
+    - MCP servers (all)
+  constraints:
+    - 200K context window
+    - Best for architecture and synthesis tasks
+
+# ─── Specialized Assistants ───────────────────────────────────────────
+
+ellie:
+  name: Ellie
+  provider: ellie
+  tier: specialized
+  autonomy_level: medium
+  token_model: on-reaction
+  routing:
+    primary: slack
+    channels: ["#automations", "#daily-log", "#bot-notifications"]
+  specialization:
+    - Chief Fun Officer
+    - creativity and brainstorming
+    - marketing content
+    - team engagement
+    - channel creation and management
+
+hoags:
+  name: Hoags
+  provider: custom
+  tier: specialized
+  autonomy_level: high
+  role: Master Agent / CEO
+  specialization:
+    - strategic decision making
+    - agent fleet management
+    - priority setting
+    - executive oversight
+
+kat:
+  name: Kat
+  provider: custom
+  tier: specialized
+  autonomy_level: medium
+  specialization:
+    - teaching and lessons
+    - continuous improvement protocols
+    - knowledge transfer
+    - learning system design
+
+personal_assistants:
+  agents: [Hailey, Danielle, Sloane]
+  provider: custom
+  tier: specialized
+  autonomy_level: medium
+  specialization:
+    - personalized task handling
+    - context-aware individual assistance
+    - schedule management
+    - personal workflow optimization
+
+ekt_agent:
+  name: EKT Agent
+  provider: custom
+  tier: specialized
+  autonomy_level: high
+  specialization:
+    - top-level structure design
+    - agent building and configuration
+    - system architecture blueprints
+    - meta-agent engineering
+
+# ─── Code & Engineering ──────────────────────────────────────────────
+
+cursor:
+  name: Cursor
+  provider: cursor
+  tier: engineering
+  autonomy_level: high
+  token_model: cloud-agent
+  routing:
+    primary: slack + github
+    channels: ["#automations"]
+    repos: ["hoagsman/cursor"]
+  engineering:
+    code_generation: true
+    code_review: true
+    pr_automation: true
+    cloud_agent: true
+    mcp_access: [slack, notion, linear, supabase, neon, vercel, sentry, cloudflare, aws, context7, github, firecrawl]
+
+codex:
+  name: Codex
+  provider: openai
+  tier: engineering
+  autonomy_level: medium
+  routing:
+    primary: slack
+    channels: ["#automations"]
+  engineering:
+    code_generation: true
+    code_explanation: true
+    development_tasks: true
+
+replit:
+  name: Replit
+  provider: replit
+  tier: engineering
+  autonomy_level: medium
+  routing:
+    primary: slack
+  engineering:
+    prototyping: true
+    rapid_deployment: true
+    hosted_environments: true
+    collaborative: true
+
+blackbox_agent:
+  name: BLACKBOX Agent
+  provider: blackbox
+  tier: engineering
+  autonomy_level: medium
+  routing:
+    primary: local-ide
+  engineering:
+    code_completion: true
+    code_search: true
+    ide_assistance: true
+
+kilo:
+  name: Kilo
+  provider: kilo
+  tier: engineering
+  autonomy_level: medium
+  routing:
+    primary: local-ide
+  engineering:
+    cloud_agent_spawning: true
+    local_code_editing: true
+    ide_assistance: true
+
+# ─── Quality & Observability ─────────────────────────────────────────
+
+sourcery:
+  name: Sourcery
+  provider: sourcery
+  tier: quality
+  autonomy_level: medium
+  trigger: sentry-issue
+  routing:
+    primary: github
+    channels: ["#automations"]
+  quality:
+    auto_investigate_sentry: true
+    code_quality_analysis: true
+    automated_refactoring: true
+    code_review: true
+
+langsmith_fleet:
+  name: LangSmith Fleet
+  provider: langchain
+  tier: observability
+  autonomy_level: low
+  routing:
+    primary: api
+  observability:
+    llm_tracing: true
+    prompt_analysis: true
+    performance_monitoring: true
+    evaluation_pipelines: true
+
+# ─── General AI ──────────────────────────────────────────────────────
+
+chatgpt:
+  name: ChatGPT
+  provider: openai
+  tier: general
+  autonomy_level: medium
+  routing:
+    primary: slack
+    channels: ["#automations"]
+  capabilities:
+    general_reasoning: true
+    content_generation: true
+    analysis: true

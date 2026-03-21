@@ -1,0 +1,258 @@
+# Alpha Loop Capital — Trigger → Action → Output Flow Diagrams
+# Every automation mapped as trigger > action > output
+# Last updated: 2026-03-21
+
+version: "1.0.0"
+
+# ═══════════════════════════════════════════════════════════════════════
+# FLOW DIAGRAMS
+# ═══════════════════════════════════════════════════════════════════════
+
+flows:
+
+  # ─── 1. OpenClaw Cron Dispatch ───────────────────────────────────
+
+  openclaw_cron:
+    name: OpenClaw Cron Dispatch
+    phase: 1 (active)
+    trigger:
+      type: cron
+      source: OpenClaw Gateway
+      schedule: configured intervals
+    action:
+      - "webhook POST → n8n /webhook/openclaw-cron"
+      - "n8n Code Node formats message + @mentions"
+      - "n8n Slack Node posts to #agent-to-agent"
+    output:
+      destination: "Slack #agent-to-agent"
+      format: "Formatted message with agent @mentions"
+      result: "Tagged agents react and execute"
+    token_model: "Zero waste — tokens consumed only on agent reaction"
+
+  # ─── 2. Sentry Issue Auto-Investigation ──────────────────────────
+
+  sentry_investigation:
+    name: Sentry Auto-Investigation
+    phase: 1 (active)
+    trigger:
+      type: event
+      source: Sentry
+      event: "Issue posted to Slack"
+    action:
+      - "Sourcery detects @Sentry mention"
+      - "Sourcery auto-investigates the issue"
+      - "Investigation results posted to Slack thread"
+    output:
+      destination: "Slack thread (same channel as Sentry post)"
+      format: "Investigation report with root cause analysis"
+      result: "Actionable bug report for engineering"
+
+  # ─── 3. Agent-to-Agent Task Dispatch ─────────────────────────────
+
+  agent_dispatch:
+    name: Agent-to-Agent Task Dispatch
+    phase: 1 (active)
+    trigger:
+      type: message
+      source: "Human or agent in Slack"
+      channel: "#agent-to-agent or #automations"
+    action:
+      - "Manus receives and decomposes task"
+      - "Manus identifies target agent(s)"
+      - "Posts task with @mentions to #agent-to-agent"
+      - "Tagged agents execute"
+    output:
+      destination: "Slack #agent-to-agent thread"
+      format: "Task results from each agent"
+      result: "Manus synthesizes final output"
+
+  # ─── 4. Code Development Pipeline ───────────────────────────────
+
+  code_pipeline:
+    name: Code Development Pipeline
+    phase: 1 (active)
+    trigger:
+      type: message
+      source: "Slack message or GitHub issue"
+    action:
+      - "Cursor receives task via Slack/GitHub"
+      - "Creates feature branch"
+      - "Generates code, commits, pushes"
+      - "Creates PR"
+      - "Sourcery reviews"
+    output:
+      destination: "GitHub PR"
+      format: "Code changes with PR description"
+      result: "Reviewed, mergeable PR"
+
+  # ─── 5. Deployment Pipeline ─────────────────────────────────────
+
+  deployment:
+    name: Vercel Deployment
+    phase: 1 (active)
+    trigger:
+      type: git-event
+      source: "GitHub merge to main"
+    action:
+      - "Vercel detects merge"
+      - "Builds and deploys"
+      - "Posts deployment notification to Slack"
+    output:
+      destination: "Slack + Vercel dashboard"
+      format: "Deployment status, preview URL"
+      result: "Live production deployment"
+
+  # ─── 6. Knowledge Sync Pipeline ──────────────────────────────────
+
+  knowledge_sync:
+    name: Obsidian ↔ Notion Sync
+    phase: 1 (active)
+    trigger:
+      type: content-change
+      source: "Obsidian vault or Notion workspace"
+    action:
+      - "Change detected in source"
+      - "Bidirectional sync propagates"
+      - "Notion AI enriches content"
+    output:
+      destination: "Both Obsidian and Notion"
+      format: "Synchronized content"
+      result: "Unified Second Brain accessible to all agents"
+
+  # ─── 7. Priority-Based Routing ───────────────────────────────────
+
+  priority_routing:
+    name: Priority-Based Message Routing
+    phase: 1 (active)
+    trigger:
+      type: webhook
+      source: "Any inbound webhook with priority field"
+    action:
+      - "n8n receives webhook"
+      - "Switch node checks priority"
+      - "Critical: double-post to #investment-ops + fan-out"
+      - "Normal: standard fan-out"
+      - "Low: post without @mentions"
+    output:
+      destination: "Slack (priority-appropriate channels)"
+      format: "Formatted message"
+      result: "Right message to right channel at right urgency"
+
+  # ─── 8. Daily Briefing (Planned Phase 2) ─────────────────────────
+
+  daily_briefing:
+    name: Daily 8AM Briefing
+    phase: 2 (planned)
+    trigger:
+      type: cron
+      schedule: "0 8 * * * (daily at 8AM)"
+    action:
+      - "n8n cron fires at 8AM"
+      - "HTTP nodes gather market data + agent status"
+      - "Code node synthesizes briefing"
+      - "Post to #daily-log"
+      - "Sync to Obsidian vault via Notion"
+    output:
+      destination: "Slack #daily-log + Obsidian"
+      format: "Structured daily briefing"
+      result: "Team starts day with full context"
+
+  # ─── 9. Market Research (Planned Phase 2) ────────────────────────
+
+  market_research:
+    name: Autonomous Market Research
+    phase: 2 (planned)
+    trigger:
+      type: cron
+      schedule: "0 */4 * * * (every 4 hours)"
+    action:
+      - "n8n cron fires"
+      - "Fetch financial news APIs"
+      - "Run sentiment analysis"
+      - "Check alert thresholds"
+      - "If critical: post to #investment-ops"
+      - "Log to Notion research database"
+    output:
+      destination: "Slack #investment-ops (critical) + Notion"
+      format: "Market insights with sentiment scores"
+      result: "Proactive financial intelligence"
+
+  # ─── 10. Bug-to-Fix Autonomous Chain (Planned Phase 3) ──────────
+
+  bug_to_fix:
+    name: Fully Autonomous Bug-to-Fix Chain
+    phase: 3 (planned)
+    trigger:
+      type: event
+      source: "Sentry error detection"
+    action:
+      - "Sentry detects bug"
+      - "LangSmith provides traces"
+      - "Claude scopes the fix"
+      - "Cursor implements on branch"
+      - "Vercel deploys preview"
+      - "Sourcery verifies fix"
+      - "Auto-merge if verified"
+    output:
+      destination: "GitHub + Vercel + Slack"
+      format: "Fixed, deployed, verified code"
+      result: "Zero-human-intervention bug resolution"
+
+  # ─── 11. l8p Self-Optimization (Planned Phase 3) ────────────────
+
+  l8p_optimization:
+    name: l8p Workflow Self-Optimizer
+    phase: 3 (planned)
+    trigger:
+      type: cron
+      schedule: "0 2 * * 0 (weekly Sunday 2AM)"
+    action:
+      - "Gather workflow execution metrics"
+      - "l8p protocol evaluates efficiency"
+      - "Generate optimization recommendations"
+      - "Post recommendations for review"
+      - "Apply approved optimizations to n8n"
+    output:
+      destination: "Slack + n8n workflow configs"
+      format: "Optimization report + auto-applied changes"
+      result: "Continuously improving automation efficiency"
+
+  # ─── 12. Universal Context Persistence (Planned Phase 3) ────────
+
+  context_persistence:
+    name: Unified Context Persistence
+    phase: 3 (planned)
+    trigger:
+      type: event
+      source: "Any agent interaction"
+    action:
+      - "Agent interaction captured"
+      - "Context extracted and structured"
+      - "Written to shared state (Obsidian + Notion + agent memory)"
+      - "All agents can read updated context"
+    output:
+      destination: "Obsidian + Notion + agent memory layer"
+      format: "Structured context objects"
+      result: "Real-time shared state across all agents"
+
+# ═══════════════════════════════════════════════════════════════════════
+# SUMMARY
+# ═══════════════════════════════════════════════════════════════════════
+
+summary:
+  total_flows: 12
+  active_phase_1: 7
+  planned_phase_2: 2
+  planned_phase_3: 3
+  trigger_types:
+    cron: 4
+    webhook: 3
+    event: 3
+    message: 1
+    content_change: 1
+  output_destinations:
+    slack: 12
+    notion_obsidian: 5
+    github: 3
+    vercel: 2
+    n8n: 1

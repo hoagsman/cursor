@@ -1,0 +1,177 @@
+# Alpha Loop Capital — System/Agent Ownership Matrix
+# Maps every system, workflow, and domain to its owning agent(s)
+# Last updated: 2026-03-21
+
+version: "1.0.0"
+
+# ═══════════════════════════════════════════════════════════════════════
+# OWNERSHIP BY DOMAIN
+# ═══════════════════════════════════════════════════════════════════════
+
+ownership:
+
+  # ─── Orchestration & Routing ─────────────────────────────────────
+
+  workflow_orchestration:
+    domain: Workflow Orchestration & Automation
+    primary_owner: manus
+    secondary: [computer, claude]
+    systems: [n8n, OpenClaw Gateway, Slack webhooks]
+    description: End-to-end workflow building, scheduling, and dispatch
+
+  agent_fleet_management:
+    domain: Agent Fleet Management
+    primary_owner: hoags
+    secondary: [ekt_agent, manus]
+    systems: [Slack workspace, agent configs]
+    description: Strategic oversight of all agents, priority setting
+
+  cross_agent_orchestration:
+    domain: Cross-Agent Communication
+    primary_owner: computer
+    secondary: [manus]
+    systems: [Slack #agent-to-agent, webhook routes]
+    description: Scheduling, monitoring, inter-agent task handoff
+
+  # ─── Code & Engineering ──────────────────────────────────────────
+
+  code_generation:
+    domain: Code Generation & Development
+    primary_owner: cursor
+    secondary: [codex, replit, blackbox_agent, kilo]
+    systems: [GitHub, IDE environments, cloud agents]
+    description: All code writing, PR management, and repository work
+
+  code_quality:
+    domain: Code Quality & Review
+    primary_owner: sourcery
+    secondary: [cursor]
+    systems: [GitHub, Sentry, IDE]
+    description: Auto-investigation of bugs, code review, refactoring
+
+  deployment:
+    domain: Deployment & Release
+    primary_owner: vercel
+    secondary: [cursor]
+    systems: [Vercel, GitHub Actions]
+    description: Production deployments, preview environments, release notifications
+
+  # ─── Knowledge & Documentation ──────────────────────────────────
+
+  knowledge_base:
+    domain: Knowledge Base (Second Brain)
+    primary_owner: notion
+    secondary: [notion_ai]
+    systems: [Notion workspace, Obsidian vault]
+    description: Bidirectional sync, documentation, knowledge management
+
+  content_generation:
+    domain: AI Content & Synthesis
+    primary_owner: notion_ai
+    secondary: [claude, chatgpt]
+    systems: [Notion, Slack]
+    description: AI-powered summaries, content creation, knowledge synthesis
+
+  # ─── Project Management ──────────────────────────────────────────
+
+  project_tracking:
+    domain: Project & Issue Management
+    primary_owner: linear
+    secondary: [linear_asks]
+    systems: [Linear workspace]
+    description: Issues, sprints, cycles, milestones, project status
+
+  # ─── Observability ──────────────────────────────────────────────
+
+  llm_observability:
+    domain: LLM Performance & Traces
+    primary_owner: langsmith_fleet
+    secondary: [sourcery]
+    systems: [LangSmith, Sentry]
+    description: Trace analysis, prompt evaluation, performance monitoring
+
+  # ─── Productivity ───────────────────────────────────────────────
+
+  file_management:
+    domain: File Storage & Documents
+    primary_owner: google_drive
+    secondary: [onedrive_sharepoint]
+    systems: [Google Drive, OneDrive, SharePoint]
+    description: All file storage, document sharing, search
+
+  calendar_scheduling:
+    domain: Calendar & Scheduling
+    primary_owner: outlook_calendar
+    secondary: [tom_gmail]
+    systems: [Outlook, Gmail Calendar]
+    description: Meeting scheduling, calendar management, availability
+
+  email:
+    domain: Email Communication
+    primary_owner: tom_gmail
+    systems: [Gmail]
+    description: Email send/receive, notifications
+
+  data_workflows:
+    domain: Spreadsheet & Data Pipelines
+    primary_owner: google_sheets
+    systems: [Google Sheets, Pipedream]
+    description: Workflow step tracking, data processing
+
+  # ─── Design ─────────────────────────────────────────────────────
+
+  design:
+    domain: Design & Prototyping
+    primary_owner: figma
+    systems: [Figma]
+    description: Design collaboration, prototype sharing
+
+  # ─── Specialized Domains ─────────────────────────────────────────
+
+  creativity_marketing:
+    domain: Creativity, Fun & Marketing
+    primary_owner: ellie
+    systems: [Slack]
+    description: Creative content, team engagement, marketing strategy
+
+  teaching_improvement:
+    domain: Learning & Continuous Improvement
+    primary_owner: kat
+    systems: [Slack, Notion]
+    description: Lessons, teaching, process improvement
+
+  personal_assistance:
+    domain: Personalized Assistance
+    primary_owner: personal_assistants  # Hailey, Danielle, Sloane
+    systems: [Slack]
+    description: Context-aware personal task handling
+
+  agent_architecture:
+    domain: Agent Building & Meta-Engineering
+    primary_owner: ekt_agent
+    secondary: [hoags]
+    systems: [Slack, agent configs]
+    description: Top-level structures, new agent creation
+
+  # ─── Protocols ──────────────────────────────────────────────────
+
+  bdi_protocol:
+    domain: BDI Protocol Management
+    primary_owner: claude
+    secondary: [hoags]
+    systems: ["#goals-and-objectives channel", Notion]
+    description: Beliefs, desires, and intentions framework
+
+  l8p_protocol:
+    domain: l8p Self-Improvement Protocol
+    primary_owner: claude
+    secondary: [manus]
+    systems: [n8n, Slack]
+    description: Workflow self-evaluation and optimization
+
+  mce_protocol:
+    domain: Meta-Context Engineering
+    primary_owner: claude
+    secondary: [manus, computer]
+    systems: [Slack, Notion, Obsidian]
+    description: Cross-agent context synthesis

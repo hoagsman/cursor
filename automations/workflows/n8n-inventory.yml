@@ -1,0 +1,204 @@
+# Alpha Loop Capital — n8n Workflow Inventory
+# All n8n workflows, triggers, and automation chains
+# Last updated: 2026-03-21
+
+version: "1.0.0"
+instance: ClawsTAK n8n
+
+# ═══════════════════════════════════════════════════════════════════════
+# ACTIVE WORKFLOWS
+# ═══════════════════════════════════════════════════════════════════════
+
+active_workflows:
+
+  openclaw_cron_dispatch:
+    name: OpenClaw Cron Dispatch
+    status: active
+    trigger:
+      type: webhook
+      endpoint: /webhook/openclaw-cron
+      source: OpenClaw Gateway
+    nodes:
+      - type: webhook
+        name: Receive OpenClaw Cron
+      - type: code
+        name: Format Message + Mentions
+        description: Constructs Slack message with appropriate @mentions based on task type
+      - type: slack
+        name: Post to Agent Channel
+        target: "#agent-to-agent"
+    output: Formatted message posted to Slack with agent mentions
+    token_efficiency: "Zero-waste — agents only consume tokens when reacting to mentions"
+
+  webhook_to_slack_routing:
+    name: Webhook-to-Slack Router
+    status: active
+    trigger:
+      type: webhook
+      endpoint: /webhook/slack-route
+    nodes:
+      - type: webhook
+        name: Receive Inbound Webhook
+      - type: switch
+        name: Route by Priority
+        cases:
+          critical: "Post to #investment-ops + standard fan-out"
+          normal: "Standard fan-out to relevant channel"
+          low: "Post without @mentions"
+      - type: slack
+        name: Post to Target Channel(s)
+    output: Priority-routed Slack messages
+
+  agent_mention_fanout:
+    name: Agent Mention Fan-out
+    status: active
+    trigger:
+      type: webhook
+      endpoint: /webhook/agent-fanout
+    nodes:
+      - type: webhook
+        name: Receive Task
+      - type: code
+        name: Determine Agent Tags
+        description: Maps task type to required agent @mentions
+      - type: slack
+        name: Fan-out to Channels
+    output: Task broadcast to correct agents across channels
+
+# ═══════════════════════════════════════════════════════════════════════
+# PLANNED WORKFLOWS (Phase 2)
+# ═══════════════════════════════════════════════════════════════════════
+
+planned_workflows:
+
+  daily_8am_briefing:
+    name: Daily 8AM Briefing
+    status: planned
+    phase: 2
+    trigger:
+      type: cron
+      schedule: "0 8 * * *"
+    nodes:
+      - type: cron
+        name: 8AM Trigger
+      - type: http
+        name: Gather Market Data
+      - type: http
+        name: Gather Agent Status
+      - type: code
+        name: Synthesize Briefing
+      - type: slack
+        name: Post to #daily-log
+      - type: notion
+        name: Sync to Obsidian Vault
+    output: Daily briefing in Slack and Obsidian
+
+  market_research_trigger:
+    name: Autonomous Market Research
+    status: planned
+    phase: 2
+    trigger:
+      type: cron
+      schedule: "0 */4 * * *"
+    nodes:
+      - type: cron
+        name: 4-Hour Trigger
+      - type: http
+        name: Fetch Financial News APIs
+      - type: code
+        name: Sentiment Analysis
+      - type: switch
+        name: Alert Threshold Check
+      - type: slack
+        name: Post to #investment-ops (if critical)
+      - type: notion
+        name: Log to Research Database
+    output: Market insights with sentiment alerts
+
+  sentry_to_fix_pipeline:
+    name: Sentry Bug-to-Fix Pipeline
+    status: planned
+    phase: 3
+    trigger:
+      type: webhook
+      source: Sentry
+    nodes:
+      - type: webhook
+        name: Sentry Alert
+      - type: code
+        name: Parse Error Context
+      - type: http
+        name: LangSmith Trace Lookup
+      - type: http
+        name: Claude Scope Fix
+      - type: http
+        name: Cursor Implement Fix
+      - type: http
+        name: Vercel Deploy
+      - type: http
+        name: Sourcery Verify
+      - type: slack
+        name: Report Resolution
+    output: Fully autonomous bug detection → fix → deploy → verify
+
+  l8p_workflow_optimizer:
+    name: l8p Workflow Self-Optimizer
+    status: planned
+    phase: 3
+    trigger:
+      type: cron
+      schedule: "0 2 * * 0"  # Weekly Sunday 2AM
+    nodes:
+      - type: cron
+        name: Weekly Trigger
+      - type: http
+        name: Gather Workflow Metrics
+      - type: code
+        name: l8p Protocol Evaluation
+      - type: code
+        name: Generate Optimization Recommendations
+      - type: slack
+        name: Post Recommendations
+      - type: n8n-api
+        name: Apply Auto-Optimizations (with approval)
+    output: Self-improving workflow configurations
+
+# ═══════════════════════════════════════════════════════════════════════
+# PIPELINE INTEGRATIONS
+# ═══════════════════════════════════════════════════════════════════════
+
+pipeline_integrations:
+  google_sheets_pipedream:
+    name: Google Sheets via Pipedream
+    status: active
+    description: Workflow step data piped through Pipedream to Google Sheets
+    direction: n8n → Pipedream → Google Sheets
+
+  slack_api:
+    name: Slack API
+    status: active
+    description: Direct Slack API calls for message posting, channel management
+    direction: n8n → Slack API
+
+  notion_api:
+    name: Notion API
+    status: active
+    description: Page creation, database queries, content sync
+    direction: n8n ↔ Notion API
+
+# ═══════════════════════════════════════════════════════════════════════
+# SUMMARY
+# ═══════════════════════════════════════════════════════════════════════
+
+summary:
+  total_workflows: 7
+  active: 3
+  planned_phase_2: 2
+  planned_phase_3: 2
+  trigger_types:
+    webhook: 4
+    cron: 3
+  output_destinations:
+    slack: 7
+    notion: 3
+    google_sheets: 1

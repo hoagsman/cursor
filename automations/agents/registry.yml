@@ -1,0 +1,500 @@
+# Alpha Loop Capital — Complete Agent & Bot Registry
+# EVERY agent, bot, and integration. None forgotten.
+# Last updated: 2026-03-21
+
+version: "1.0.0"
+total_count: 28
+
+# ═══════════════════════════════════════════════════════════════════════
+# PRIMARY ORCHESTRATION AGENTS (3)
+# ═══════════════════════════════════════════════════════════════════════
+
+primary_orchestration:
+
+  manus:
+    id: manus
+    name: Manus
+    slack_id: U0AFCJWQ9RP
+    type: ai-agent
+    provider: manus
+    role: orchestrator
+    status: active
+    connector: Slack / iMessage bridge
+    routing: slack-channel
+    description: Autonomous multi-step tasks, workflow building, end-to-end automation
+    capabilities:
+      - autonomous multi-step task execution
+      - workflow building and design
+      - end-to-end automation
+      - cross-platform messaging
+      - agent orchestration
+      - daily dispatch
+
+  computer:
+    id: computer
+    name: Computer
+    slack_id: U0AL3Q38QQJ
+    type: ai-agent
+    provider: anthropic
+    role: orchestration-support
+    status: active
+    connector: Anthropic Computer Use
+    description: Workflow scheduling, monitoring, cross-agent orchestration
+    capabilities:
+      - UI interaction and browser automation
+      - workflow scheduling
+      - monitoring
+      - cross-agent orchestration
+      - data gathering
+
+  claude:
+    id: claude
+    name: Claude
+    slack_id: U0ADM6QA5A9
+    type: ai-agent
+    provider: anthropic
+    role: architect
+    status: active
+    connector: Claude Desktop / Kilo Code
+    routing: slack-channel
+    description: Workflow architecture, complex logic, feedback synthesis
+    capabilities:
+      - strategic reasoning
+      - workflow architecture
+      - complex logic design
+      - feedback synthesis
+      - analytical writing
+
+# ═══════════════════════════════════════════════════════════════════════
+# SPECIALIZED ASSISTANT AGENTS (5)
+# ═══════════════════════════════════════════════════════════════════════
+
+specialized_assistants:
+
+  ellie:
+    id: ellie
+    name: Ellie
+    slack_id: U0AEJRZEVC7
+    type: ai-agent
+    provider: ellie
+    role: chief-fun-officer
+    status: active
+    connector: Slack channel
+    routing: slack-channel
+    description: Chief Fun Officer, creativity, marketing
+    capabilities:
+      - creative content generation
+      - marketing strategy
+      - team engagement
+      - channel management
+      - task assistance
+
+  hoags:
+    id: hoags
+    name: Hoags
+    type: ai-agent
+    provider: custom
+    role: master-agent-ceo
+    status: active
+    description: Master Agent / CEO — top-level decision making and strategic oversight
+    capabilities:
+      - strategic oversight
+      - decision making
+      - agent fleet management
+      - priority setting
+
+  kat:
+    id: kat
+    name: Kat
+    type: ai-agent
+    provider: custom
+    role: teaching-improvement
+    status: active
+    description: Teaching, lessons, continuous improvement
+    capabilities:
+      - teaching and instruction
+      - lesson planning
+      - continuous improvement
+      - knowledge transfer
+
+  personal_assistants:
+    id: personal-assistants
+    name: Hailey / Danielle / Sloane
+    type: ai-agent
+    provider: custom
+    role: personalized-assistants
+    status: active
+    description: Personalized assistant agents with individual specializations
+    agents:
+      - name: Hailey
+        specialization: personalized assistance
+      - name: Danielle
+        specialization: personalized assistance
+      - name: Sloane
+        specialization: personalized assistance
+    capabilities:
+      - personalized task handling
+      - context-aware assistance
+      - individual specializations
+
+  ekt_agent:
+    id: ekt-agent
+    name: EKT Agent
+    type: ai-agent
+    provider: custom
+    role: agent-builder
+    status: active
+    description: Top-level structures, agent builder
+    capabilities:
+      - top-level structure design
+      - agent building and configuration
+      - system architecture
+
+# ═══════════════════════════════════════════════════════════════════════
+# CODE & ENGINEERING AGENTS (5)
+# ═══════════════════════════════════════════════════════════════════════
+
+code_engineering:
+
+  cursor:
+    id: cursor
+    name: Cursor
+    slack_id: U0AF1HYNETC
+    type: ai-agent
+    provider: cursor
+    role: development
+    status: connected
+    connector: Slack/GitHub (Cloud Agent)
+    routing: slack-channel + github-repo
+    description: Cloud agent / IDE — code gen, code review, PR automation
+    capabilities:
+      - code generation
+      - code review
+      - repository management
+      - pull request automation
+      - cloud agent spawning
+
+  codex:
+    id: codex
+    name: Codex
+    slack_id: U0AE36SA6FK
+    type: ai-agent
+    provider: openai
+    role: development
+    status: active
+    connector: Slack channel / API
+    routing: slack-channel
+    description: Code generation and development tasks
+    capabilities:
+      - code generation
+      - development tasks
+      - code explanation
+
+  replit:
+    id: replit
+    name: Replit
+    slack_id: U0AEWF8B1TP
+    type: ai-agent
+    provider: replit
+    role: development
+    status: active
+    connector: Slack channel
+    routing: slack-channel
+    description: Prototyping, rapid deployment, hosted environments
+    capabilities:
+      - prototyping
+      - rapid deployment
+      - hosted environments
+      - collaborative coding
+
+  blackbox_agent:
+    id: blackbox-agent
+    name: BLACKBOX Agent
+    slack_id: U0ALP863EH3
+    type: ai-agent
+    provider: blackbox
+    role: development
+    status: active
+    connector: Blackbox AI IDE
+    routing: local-ide
+    description: Code completion, code search, IDE-based AI assistance
+    capabilities:
+      - code completion
+      - code search
+      - IDE-based AI assistance
+
+  kilo:
+    id: kilo
+    name: Kilo
+    slack_id: U0AMAG8N1LY
+    type: ai-agent
+    provider: kilo
+    role: development
+    status: active
+    connector: Kilo Code IDE
+    routing: local-ide
+    description: Cloud agent spawning for codebase work
+    capabilities:
+      - cloud agent spawning
+      - local code editing
+      - IDE-based AI assistance
+
+# ═══════════════════════════════════════════════════════════════════════
+# QUALITY & OBSERVABILITY AGENTS (2)
+# ═══════════════════════════════════════════════════════════════════════
+
+quality_observability:
+
+  sourcery:
+    id: sourcery
+    name: Sourcery
+    slack_id: U0AHE3PGTME
+    type: ai-agent
+    provider: sourcery
+    role: code-quality
+    status: connected
+    connector: GitHub / IDE
+    description: Auto-investigates Sentry issues, code quality, automated refactoring
+    capabilities:
+      - auto-investigate Sentry issues
+      - code quality analysis
+      - automated refactoring
+      - code review
+
+  langsmith_fleet:
+    id: langsmith-fleet
+    name: LangSmith Fleet
+    slack_id: U0AG9P1F5U7
+    type: ai-agent
+    provider: langchain
+    role: observability
+    status: active
+    connector: API (bash/scripts)
+    routing: api
+    description: Trace analysis, performance monitoring
+    capabilities:
+      - LLM observability
+      - prompt tracing
+      - trace analysis
+      - performance monitoring
+      - evaluation
+
+# ═══════════════════════════════════════════════════════════════════════
+# KNOWLEDGE & PROJECT MANAGEMENT (4)
+# ═══════════════════════════════════════════════════════════════════════
+
+knowledge_project_management:
+
+  notion:
+    id: notion
+    name: Notion
+    slack_id: U0ADN6QBCLW
+    type: integration
+    provider: notion
+    role: knowledge-base
+    status: connected
+    connector: Notion MCP
+    description: "Bidirectional sync with Obsidian vault (Second Brain)"
+    capabilities:
+      - knowledge base
+      - documentation
+      - bidirectional Obsidian sync
+      - database management
+
+  notion_ai:
+    id: notion-ai
+    name: Notion AI
+    slack_id: U0ADTS80MM2
+    type: ai-agent
+    provider: notion
+    role: knowledge-synthesis
+    status: connected
+    connector: Notion MCP
+    description: AI-powered content generation and knowledge synthesis
+    capabilities:
+      - AI-powered content generation
+      - knowledge synthesis
+      - search and summarization
+
+  linear:
+    id: linear
+    name: Linear
+    slack_id: U0AD8QNPN23
+    type: integration
+    provider: linear
+    role: project-management
+    status: connected
+    connector: Linear OAuth
+    description: Issue tracking, project management, sprint planning
+    capabilities:
+      - issue tracking
+      - project management
+      - sprint planning
+      - cycle management
+
+  linear_asks:
+    id: linear-asks
+    name: Linear Asks
+    type: integration
+    provider: linear
+    role: conversational-pm
+    status: connected
+    connector: Linear OAuth
+    description: Conversational issue triage and project queries
+    capabilities:
+      - conversational issue triage
+      - project queries
+      - natural language issue management
+
+# ═══════════════════════════════════════════════════════════════════════
+# PRODUCTIVITY & FILE INTEGRATIONS (5)
+# ═══════════════════════════════════════════════════════════════════════
+
+productivity_files:
+
+  google_drive:
+    id: google-drive
+    name: Google Drive
+    slack_id: U0AFTUJV8TA
+    type: integration
+    provider: google
+    role: storage
+    status: connected
+    connector: Google Drive
+    description: File storage and document management
+    capabilities:
+      - file storage
+      - document management
+
+  google_sheets:
+    id: google-sheets-workflow-steps
+    name: Google Sheets Workflow Steps
+    slack_id: U0AEL51U0DD
+    type: integration
+    provider: google
+    role: data-workflow
+    status: connected
+    connector: Google Sheets (Pipedream)
+    description: Spreadsheet automation and workflow data processing
+    capabilities:
+      - spreadsheet automation
+      - workflow data processing
+
+  tom_gmail:
+    id: tom-gmail
+    name: Tom - Gmail
+    slack_id: U0AEW00NCNR
+    type: integration
+    provider: google
+    role: communication
+    status: connected
+    connector: Gmail with Calendar
+    description: Email and calendar integration
+    capabilities:
+      - email
+      - calendar integration
+
+  onedrive_sharepoint:
+    id: onedrive-sharepoint
+    name: OneDrive and SharePoint
+    slack_id: U0AEV6EA83V
+    type: integration
+    provider: microsoft
+    role: storage
+    status: connected
+    connector: OneDrive / SharePoint (Files search)
+    description: File storage, document sharing, file search
+    capabilities:
+      - file storage
+      - document sharing
+      - file search
+
+  outlook_calendar:
+    id: outlook-calendar
+    name: Outlook Calendar
+    slack_id: U0AF56G54CU
+    type: integration
+    provider: microsoft
+    role: scheduling
+    status: connected
+    connector: Outlook
+    description: Calendar management and meeting scheduling
+    capabilities:
+      - calendar management
+      - meeting scheduling
+
+# ═══════════════════════════════════════════════════════════════════════
+# AI ASSISTANTS & OTHER (3)
+# ═══════════════════════════════════════════════════════════════════════
+
+ai_assistants_other:
+
+  chatgpt:
+    id: chatgpt
+    name: ChatGPT
+    slack_id: U0AF56D8J8L
+    type: ai-agent
+    provider: openai
+    role: general-ai
+    status: active
+    connector: Slack channel / API
+    routing: slack-channel
+    description: General conversational AI
+    capabilities:
+      - general reasoning
+      - analysis
+      - content generation
+
+  figma:
+    id: figma
+    name: Figma
+    slack_id: U0ADN76A77Y
+    type: integration
+    provider: figma
+    role: design
+    status: connected
+    connector: Figma Slack integration
+    description: Design collaboration
+    capabilities:
+      - design collaboration
+      - prototype sharing
+      - design notifications
+
+  vercel:
+    id: vercel
+    name: Vercel
+    slack_id: U0AF3N4JKNG
+    type: integration
+    provider: vercel
+    role: deployment
+    status: connected
+    connector: Vercel OAuth
+    description: Deployment notifications and releases
+    capabilities:
+      - deployment
+      - hosting
+      - preview environments
+      - release notifications
+
+# ═══════════════════════════════════════════════════════════════════════
+# SUMMARY
+# ═══════════════════════════════════════════════════════════════════════
+
+summary:
+  total_agents: 28
+  by_category:
+    primary_orchestration: 3
+    specialized_assistants: 5
+    code_engineering: 5
+    quality_observability: 2
+    knowledge_project_management: 4
+    productivity_files: 5
+    ai_assistants_other: 3
+    # Hailey, Danielle, Sloane counted as one group entry (3 individuals)
+  by_type:
+    ai_agents: 18
+    integrations: 10
+  by_status:
+    active: 18
+    connected: 10
+  orchestrated_by: manus
