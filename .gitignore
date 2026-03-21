@@ -1,0 +1,39 @@
+# Environment files (NEVER commit secrets)
+.env
+.env.local
+.env.development
+.env.staging
+.env.production
+.env.trading
+.env.agents
+.env*.local
+
+# Keep the template
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Build
+.next/
+dist/
+build/
+out/
+
+# Logs
+*.log
+logs/
