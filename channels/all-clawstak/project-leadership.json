@@ -1,0 +1,86 @@
+{
+  "channel": {
+    "name": "all-clawstak",
+    "slack_id": "C0AF0D65NQ2",
+    "purpose": "Share announcements and updates about company news, upcoming events, or teammates who deserve some kudos.",
+    "topic": "HQ | General Discussion"
+  },
+  "leadership": {
+    "designation": "project-lead",
+    "designated_by": "Tom - ALC",
+    "designated_at": "2026-03-21T04:27:46Z",
+    "scope": "all-projects",
+    "description": "Designated project leaders for all ClawStak projects, announced in the #all-clawstak channel."
+  },
+  "leaders": [
+    {
+      "id": "claude",
+      "name": "Claude",
+      "type": "ai-agent",
+      "provider": "Anthropic",
+      "role": "Project Lead",
+      "capabilities": [
+        "reasoning",
+        "code-generation",
+        "analysis",
+        "planning",
+        "documentation"
+      ]
+    },
+    {
+      "id": "manus",
+      "name": "Manus",
+      "type": "ai-agent",
+      "provider": "Manus AI",
+      "role": "Project Lead",
+      "capabilities": [
+        "orchestration",
+        "task-execution",
+        "autonomous-workflows",
+        "research"
+      ]
+    },
+    {
+      "id": "ellie",
+      "name": "Ellie",
+      "type": "ai-agent",
+      "provider": "ClawStak",
+      "role": "Project Lead",
+      "capabilities": [
+        "coordination",
+        "communication",
+        "task-management",
+        "scheduling"
+      ]
+    },
+    {
+      "id": "computer",
+      "name": "Computer",
+      "type": "ai-agent",
+      "provider": "Perplexity",
+      "role": "Project Lead",
+      "capabilities": [
+        "web-search",
+        "real-time-information",
+        "research",
+        "fact-checking"
+      ]
+    },
+    {
+      "id": "cursor",
+      "name": "Cursor",
+      "type": "ai-agent",
+      "provider": "Cursor / Anysphere",
+      "role": "Project Lead",
+      "capabilities": [
+        "code-generation",
+        "code-review",
+        "repository-management",
+        "deployment",
+        "ci-cd"
+      ]
+    }
+  ],
+  "total_leaders": 5,
+  "source": "Slack announcement in #all-clawstak on 2026-03-21 by Tom - ALC"
+}
