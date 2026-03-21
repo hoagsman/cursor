@@ -1,0 +1,96 @@
+{
+  "channel": {
+    "name": "paperclip",
+    "purpose": "All things related to Paperclaw AI businesses, roles, rules, instructions, automations, ideas, etc.",
+    "topic": "Paperclip AI (Github.com/paperclipai/paperclip) and paperclip.ing"
+  },
+  "agents": {
+    "primary": [
+      {
+        "name": "Ellie",
+        "roles": ["coordination", "task-management", "ai-assistant"]
+      },
+      {
+        "name": "Manus",
+        "roles": ["research", "analysis", "task-execution"]
+      },
+      {
+        "name": "Computer",
+        "roles": ["ui-automation", "browser-interaction", "research"]
+      },
+      {
+        "name": "Claude",
+        "roles": ["reasoning", "writing", "code-review", "strategy"]
+      },
+      {
+        "name": "ChatGPT",
+        "roles": ["ideation", "general-assistance", "content-generation"]
+      },
+      {
+        "name": "Cursor",
+        "roles": ["code-development", "code-review", "refactoring"]
+      }
+    ],
+    "integrations": [
+      {
+        "name": "Linear",
+        "category": "project-management"
+      },
+      {
+        "name": "LangSmith Fleet",
+        "category": "observability"
+      },
+      {
+        "name": "Notion",
+        "category": "knowledge-base"
+      },
+      {
+        "name": "Outlook Calendar",
+        "category": "scheduling"
+      },
+      {
+        "name": "Kilo",
+        "category": "operations"
+      },
+      {
+        "name": "Vercel",
+        "category": "deployment"
+      },
+      {
+        "name": "Sourcery",
+        "category": "code-review"
+      },
+      {
+        "name": "Codex",
+        "category": "development"
+      },
+      {
+        "name": "OneDrive and SharePoint",
+        "category": "storage"
+      },
+      {
+        "name": "BLACKBOX Agent",
+        "category": "ai-development"
+      },
+      {
+        "name": "Replit",
+        "category": "development"
+      },
+      {
+        "name": "Google Sheets Workflow Steps",
+        "category": "data-workflow"
+      },
+      {
+        "name": "Google Drive",
+        "category": "storage"
+      },
+      {
+        "name": "Figma",
+        "category": "design"
+      }
+    ]
+  },
+  "mentioned_entities_count": 20,
+  "source": "slack-mention-audit",
+  "recorded_at": "2026-03-21T04:15:39Z"
+}
